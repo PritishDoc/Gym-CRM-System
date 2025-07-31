@@ -1,14 +1,13 @@
 package com.gymcrm.backend.controller;
 
 import com.gymcrm.backend.dto.UserRequestDto;
-import com.gymcrm.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/user")
 @CrossOrigin(origins = "*") // for frontend testing
-public class UserController {
+public class SUserController {
 
     @Autowired
     private UserService userService;
