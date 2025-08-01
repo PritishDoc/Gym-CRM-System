@@ -115,3 +115,27 @@ body {
 .btn-red:hover {
     background-color: #dc2626;
 }
+/* Add these to your existing CSS */
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    transform: translateX(0) !important;
+  }
+}
+
+.dashboard-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.dashboard-card h3 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
