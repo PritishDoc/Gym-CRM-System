@@ -1,19 +1,20 @@
 package com.gymcrm.backend.controller;
 
-import com.gymcrm.backend.dto.UserRequestDto;
+import com.gymcrm.backend.dto.RegisterRequest;
+import com.gymcrm.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/user")
-@CrossOrigin(origins = "*") // for frontend testing
-public class SUserController {
+@CrossOrigin(origins = "*")
+public class UserController {
 
     @Autowired
     private UserService userService;
 
     @PostMapping("/register")
-    public String register(@RequestBody UserRequestDto dto) {
+    public String register(@RequestBody RegisterRequest dto) {
         return userService.registerUser(dto);
     }
 
