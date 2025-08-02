@@ -14,7 +14,8 @@ import java.util.Optional;
 import java.util.Random;
 
 @Service
-public class UserServiceImpl<UserRequestDto> implements UserService {
+public class UserServiceImpl implements UserService
+{
 
     @Autowired
     private UserRepository userRepository;
@@ -23,7 +24,8 @@ public class UserServiceImpl<UserRequestDto> implements UserService {
     private EmailSender emailSender;
 
     @Override
-    public String registerUser(UserRequestDto dto) {
+    public String registerUser(RegisterRequest dto) {
+        {
         Optional<User> existing = userRepository.findByEmail(dto.getEmail());
         if (existing.isPresent()) return "User already exists";
 
