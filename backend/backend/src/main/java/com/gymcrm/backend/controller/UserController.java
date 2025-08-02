@@ -1,6 +1,7 @@
 package com.gymcrm.backend.controller;
 
 import com.gymcrm.backend.dto.UserRequestDto;
+import com.gymcrm.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

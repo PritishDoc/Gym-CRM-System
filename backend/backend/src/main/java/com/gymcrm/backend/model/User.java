@@ -1,4 +1,5 @@
 package com.gymcrm.backend.model;
+import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,18 +13,30 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name ="users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String fullname;
     private String email;
-    private String password;
-    private String otp;
-    private boolean isVerified;
+    private String contactNo;
+    private String gender;
+    private String membership;
+    private String preferredTime;
 
+    private String otp;
+    private boolean varified;
+
+    private String createdAt;
+
+    public static CreatorCandidate.Param builder() {
+    }
     // Getters and setters
 
     public Long getId() {
@@ -34,12 +47,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getEmail() {
@@ -50,12 +63,36 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContactNo() {
+        return contactNo;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContactNo(String contactNo) {
+        this.contactNo = contactNo;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getMembership() {
+        return membership;
+    }
+
+    public void setMembership(String membership) {
+        this.membership = membership;
+    }
+
+    public String getPreferredTime() {
+        return preferredTime;
+    }
+
+    public void setPreferredTime(String preferredTime) {
+        this.preferredTime = preferredTime;
     }
 
     public String getOtp() {
@@ -66,11 +103,19 @@ public class User {
         this.otp = otp;
     }
 
-    public boolean isVerified() {
-        return isVerified;
+    public boolean isVarified() {
+        return varified;
     }
 
-    public void setVerified(boolean verified) {
-        isVerified = verified;
+    public void setVarified(boolean varified) {
+        this.varified = varified;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 }
