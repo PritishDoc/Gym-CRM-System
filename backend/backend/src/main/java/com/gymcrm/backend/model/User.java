@@ -22,20 +22,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String fullname;
     private String email;
     private String contactNo;
     private String gender;
     private String membership;
     private String preferredTime;
-
     private String otp;
     private boolean varified;
-
     private String createdAt;
 
     public static CreatorCandidate.Param builder() {
+        return null;
     }
     // Getters and setters
 
