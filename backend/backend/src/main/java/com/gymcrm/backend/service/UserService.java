@@ -1,5 +1,6 @@
 package com.gymcrm.backend.service;
 
+public interface UserService {
 
 
 import com.gymcrm.backend.dto.UserRequestDto;
