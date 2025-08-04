@@ -10,5 +10,4 @@ public class UserRequestDto {
     private String gender;
     private String membership;
     private String preferredTime;
-
 }
