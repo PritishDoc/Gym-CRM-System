@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/user")
-@CrossOrigin(origins = "*") // for frontend testing
-public class SUserController {
+@CrossOrigin(origins = "*")
+public class UserController {
 
     @Autowired
     private UserService userService;

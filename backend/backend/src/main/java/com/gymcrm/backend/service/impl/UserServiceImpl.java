@@ -22,12 +22,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String registerUser(UserRequestDto dto) {
-        // Generate 4-digit OTP with leading zeros if needed
         String otp = String.format("%04d", new Random().nextInt(10000));
 
-        // Build user object
         User user = User.builder()
-                .fullName(dto.getFullname())
+                .fullname(dto.getFullname())
                 .email(dto.getEmail())
                 .contactNo(dto.getContactNo())
                 .gender(dto.getGender())
@@ -38,24 +36,22 @@ public class UserServiceImpl implements UserService {
                 .createdAt(LocalDateTime.now().toString())
                 .build();
 
-        // Save to DB
         userRepository.save(user);
-
-        // Send OTP to user email
         emailSender.sendEmail(dto.getEmail(), "Your OTP for Gym CRM", "Your OTP is: " + otp);
 
         return "OTP sent successfully to " + dto.getEmail();
     }
 
     @Override
-    public String registerUsers(UserRequestDto userRequestDto) {
-        // Optional: Remove this if you don’t need both registerUser(s)
-        return registerUser(userRequestDto);
-    }
-
-    @Override
     public String verifyOtp(String email, String otp) {
-        // Implement OTP verification logic later
-        return "";
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (user.getOtp().equals(otp)) {
+            user.setVerified(true);
+            userRepository.save(user);
+            return "OTP verified successfully";
+        }
+        return "Invalid OTP";
     }
 }
