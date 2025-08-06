@@ -1,19 +1,16 @@
 package com.gymcrm.backend.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +22,9 @@ public class User {
     private String gender;
     private String membership;
     private String preferredTime;
+    private String password;
     private String otp;
     private boolean verified;
+    private boolean active;
     private String createdAt;
 }
