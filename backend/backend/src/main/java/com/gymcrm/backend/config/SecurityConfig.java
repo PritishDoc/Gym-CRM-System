@@ -40,6 +40,8 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
+
+//                       .anyRequest().permitAll() // ⬅️ Allow ALL requests without authentication
                         .requestMatchers(
                                 "/api/user/register",
                                 "/api/user/verify",
@@ -49,7 +51,10 @@ public class SecurityConfig {
                                 "/api/auth/**",
                                 "/error",
                                 "/v3/api-docs/**",
-                                "/swagger-ui/**"
+                                "/swagger-ui/**",
+                                "/dashboard",
+                                "/css/**",
+                                "/js/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
