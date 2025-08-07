@@ -33,6 +33,7 @@ public class SecurityConfig {
                                 "/api/user/verify",  // Explicitly allow verify endpoint
                                 "/api/user/by-email/**",  // Allow email lookup
                                 "/api/user/all",
+                                "/api/plans/**",
                                 "/error",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**"
