@@ -1,21 +1,15 @@
-package com.gymcrm.backend.model;
+package com.gymcrm.backend.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "plans")
-public class Plan {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PlanDTO {
     private Long id;
-
     private String name;
     private String description;
     private Double price;
     private Integer durationDays;
     private boolean isActive;
 
-    public Plan() {
+    // Constructors
+    public PlanDTO() {
     }
 
     // Getters and Setters
