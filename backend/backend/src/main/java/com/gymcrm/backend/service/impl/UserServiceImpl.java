@@ -8,9 +8,11 @@ import com.gymcrm.backend.util.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -27,73 +29,123 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
+    @Transactional
     public String registerUser(UserRequestDto dto) {
+        // Validate input
+        if (dto.getEmail() == null || dto.getEmail().trim().isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be empty");
+        }
+        if (dto.getPassword() == null || dto.getPassword().trim().isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be empty");
+        }
+
+        // Check if email already exists
         if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
             throw new RuntimeException("Email already registered");
         }
 
-        String otp = String.format("%04d", new Random().nextInt(10000));
+        // Generate and set OTP
+        String otp = generateOtp();
 
+        // Create and save user
         User user = User.builder()
                 .fullname(dto.getFullname())
-                .email(dto.getEmail())
+                .email(dto.getEmail().toLowerCase()) // Normalize email case
                 .contactNo(dto.getContactNo())
                 .gender(dto.getGender())
                 .membership(dto.getMembership())
                 .preferredTime(dto.getPreferredTime())
-                .password(passwordEncoder.encode(dto.getPassword())) // Add password if needed
+                .password(passwordEncoder.encode(dto.getPassword()))
                 .otp(otp)
                 .verified(false)
-                .createdAt(LocalDateTime.now().toString())
                 .active(true)
+                .createdAt(LocalDateTime.now().toString())
                 .build();
 
-        userRepository.save(user);
-        emailSender.sendEmail(dto.getEmail(), "Your OTP for Gym CRM", "Your OTP is: " + otp);
+        user = userRepository.save(user); // Ensure save is successful
 
-        return "OTP sent successfully to " + dto.getEmail();
+        try {
+            // Send OTP email after successful save
+            emailSender.sendEmail(
+                    user.getEmail(),
+                    "Your OTP for Gym CRM",
+                    "Your verification code is: " + otp + "\n\n" +
+                            "This code will expire in 10 minutes."
+            );
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to send OTP email. Please try again.");
+        }
+
+        return "Registration successful. OTP sent to " + user.getEmail();
     }
 
     @Override
+    @Transactional
     public String verifyOtp(String email, String otp) {
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        if (user.getOtp().equals(otp)) {
-            user.setVerified(true);
-            userRepository.save(user);
-            return "OTP verified successfully";
+        // Validate input
+        if (email == null || email.trim().isEmpty()) {
+            throw new IllegalArgumentException("Email cannot be empty");
         }
-        return "Invalid OTP";
+        if (otp == null || otp.trim().isEmpty()) {
+            throw new IllegalArgumentException("OTP cannot be empty");
+        }
+
+        // Find user (case-insensitive)
+        User user = userRepository.findByEmailIgnoreCase(email)
+                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+
+        // Check OTP status
+        if (user.getOtp() == null) {
+            throw new RuntimeException("No active OTP found. Please request a new OTP.");
+        }
+
+        // Verify OTP
+        if (!user.getOtp().equals(otp)) {
+            throw new RuntimeException("Invalid OTP. Please try again.");
+        }
+
+        // Update user status
+        user.setVerified(true);
+        user.setOtp(null); // Clear OTP after verification
+        userRepository.save(user);
+
+        return "OTP verified successfully. Your account is now active!";
     }
 
     @Override
     public UserResponse getUserByEmail(String email) {
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findByEmailIgnoreCase(email)
+                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
         return convertToUserResponse(user);
     }
 
     @Override
+    @Transactional
     public UserResponse updateUser(Long id, UserRequestDto dto) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
 
-        user.setFullname(dto.getFullname());
-        user.setContactNo(dto.getContactNo());
-        user.setGender(dto.getGender());
-        user.setMembership(dto.getMembership());
-        user.setPreferredTime(dto.getPreferredTime());
+        // Update fields if provided
+        if (dto.getFullname() != null) user.setFullname(dto.getFullname());
+        if (dto.getContactNo() != null) user.setContactNo(dto.getContactNo());
+        if (dto.getGender() != null) user.setGender(dto.getGender());
+        if (dto.getMembership() != null) user.setMembership(dto.getMembership());
+        if (dto.getPreferredTime() != null) user.setPreferredTime(dto.getPreferredTime());
+        if (dto.getPassword() != null && !dto.getPassword().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        }
 
         User updatedUser = userRepository.save(user);
         return convertToUserResponse(updatedUser);
     }
 
     @Override
+    @Transactional
     public void deleteUser(Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        userRepository.delete(user);
+        if (!userRepository.existsById(id)) {
+            throw new RuntimeException("User not found with id: " + id);
+        }
+        userRepository.deleteById(id);
     }
 
     @Override
@@ -101,6 +153,10 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll().stream()
                 .map(this::convertToUserResponse)
                 .collect(Collectors.toList());
+    }
+
+    private String generateOtp() {
+        return String.format("%04d", new Random().nextInt(10000));
     }
 
     private UserResponse convertToUserResponse(User user) {
