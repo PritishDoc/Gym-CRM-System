@@ -2,6 +2,7 @@ package com.gymcrm.backend.service.impl;
 
 import com.gymcrm.backend.dto.*;
 import com.gymcrm.backend.model.User;
+import com.gymcrm.backend.model.enums.Role;
 import com.gymcrm.backend.repository.UserRepository;
 import com.gymcrm.backend.service.UserService;
 import com.gymcrm.backend.util.EmailSender;
@@ -59,6 +60,7 @@ public class UserServiceImpl implements UserService {
                 .otp(otp)
                 .verified(false)
                 .active(true)
+                .role(Role.USER) // Set default role
                 .createdAt(LocalDateTime.now().toString())
                 .build();
 

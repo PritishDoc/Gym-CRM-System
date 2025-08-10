@@ -119,11 +119,11 @@ if (signupForm) {
 
         // Get form values
         const userData = {
-            fullName: document.getElementById('fullName').value,
+            fullname: document.getElementById('fullName').value,
             email: document.getElementById('signupEmail').value,
-            contactNumber: document.getElementById('contactNumber').value,
+            contactNo: document.getElementById('contactNumber').value,
             gender: document.querySelector('input[name="gender"]:checked').value,
-            membershipType: document.getElementById('membershipType').value,
+            membership: document.getElementById('membershipType').value,
             preferredTime: document.getElementById('preferredTime').value,
             password: document.getElementById('signupPassword').value,
             confirmPassword: document.getElementById('confirmPassword').value

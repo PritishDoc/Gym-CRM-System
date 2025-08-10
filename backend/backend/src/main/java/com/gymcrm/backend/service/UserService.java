@@ -6,7 +6,9 @@ import com.gymcrm.backend.dto.UserResponse;
 import java.util.List;
 
 public interface UserService {
+
     String registerUser(UserRequestDto dto);
+
     String verifyOtp(String email, String otp);
 
     UserResponse getUserByEmail(String email);
