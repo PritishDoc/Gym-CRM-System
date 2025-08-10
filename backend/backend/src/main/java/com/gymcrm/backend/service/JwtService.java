@@ -1,5 +1,6 @@
 package com.gymcrm.backend.service;
 
+import com.gymcrm.backend.repository.TokenBlacklistRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -46,7 +47,19 @@ public class JwtService {
         return jwt;
     }
 
-    public boolean isTokenValid(String jwt, UserDetails userDetails) {
+    public boolean isTokenValid(String token, UserDetails userDetails) {
+        final String username = extractUsername(token);
+
+        // Check if token is blacklisted
+        TokenBlacklistRepository tokenBlacklistRepository = null;
+        if (tokenBlacklistRepository.existsByToken(token)) {
+            return false;
+        }
+
+        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+    }
+
+    private boolean isTokenExpired(String token) {
         return false;
     }
 

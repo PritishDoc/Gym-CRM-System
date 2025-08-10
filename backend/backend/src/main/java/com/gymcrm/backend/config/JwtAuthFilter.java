@@ -1,5 +1,6 @@
 package com.gymcrm.backend.config;
 
+import com.gymcrm.backend.repository.TokenBlacklistRepository;
 import com.gymcrm.backend.service.JwtService;
 import com.gymcrm.backend.service.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
@@ -40,6 +41,14 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
 
         jwt = authHeader.substring(7);
+
+        // Check if token is blacklisted
+        TokenBlacklistRepository tokenBlacklistRepository = null;
+        if (tokenBlacklistRepository.existsByToken(jwt)) {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token invalidated");
+            return;
+        }
+
         userEmail = jwtService.extractUsername(jwt);
 
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {

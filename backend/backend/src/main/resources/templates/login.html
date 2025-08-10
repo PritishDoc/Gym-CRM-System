@@ -1,0 +1,88 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>GymFlow CRM | Login</title>-->
+<!--    <link rel="stylesheet" href="/css/login.css">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="login-container">-->
+<!--    <div class="login-card">-->
+<!--        <div class="login-header">-->
+<!--            <img src="/images/logo.png" alt="GymFlow CRM Logo" class="logo">-->
+<!--            <h1>Welcome to GymFlow CRM</h1>-->
+<!--            <p>Please sign in to access your dashboard</p>-->
+<!--        </div>-->
+
+<!--        <form id="loginForm" class="login-form">-->
+<!--            &lt;!&ndash; Error Message &ndash;&gt;-->
+<!--            <div th:if="${param.error}" class="alert alert-error">-->
+<!--                <i class="fas fa-exclamation-circle"></i>-->
+<!--                <span>Invalid email or password</span>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Logout Message &ndash;&gt;-->
+<!--            <div th:if="${param.logout}" class="alert alert-success">-->
+<!--                <i class="fas fa-check-circle"></i>-->
+<!--                <span>You have been logged out successfully</span>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Email Field &ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--                <label for="email">Email</label>-->
+<!--                <div class="input-with-icon">-->
+<!--                    <i class="fas fa-envelope"></i>-->
+<!--                    <input type="email" id="email" name="email" placeholder="your@email.com" required>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Password Field &ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--                <label for="password">Password</label>-->
+<!--                <div class="input-with-icon">-->
+<!--                    <i class="fas fa-lock"></i>-->
+<!--                    <input type="password" id="password" name="password" placeholder="••••••••" required>-->
+<!--                    <button type="button" class="toggle-password" aria-label="Show password">-->
+<!--                        <i class="fas fa-eye"></i>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Remember Me & Forgot Password &ndash;&gt;-->
+<!--            <div class="form-options">-->
+<!--                <label class="remember-me">-->
+<!--                    <input type="checkbox" name="remember-me">-->
+<!--                    <span>Remember me</span>-->
+<!--                </label>-->
+<!--                <a href="/forgot-password" class="forgot-password">Forgot password?</a>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Submit Button &ndash;&gt;-->
+<!--            <button type="submit" class="login-button">-->
+<!--                <i class="fas fa-sign-in-alt"></i>-->
+<!--                <span>Sign In</span>-->
+<!--            </button>-->
+
+<!--            &lt;!&ndash; Social Login Divider &ndash;&gt;-->
+<!--            <div class="divider">-->
+<!--                <span>or continue with</span>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Social Login &ndash;&gt;-->
+<!--            <button type="button" class="social-login google">-->
+<!--                <img src="/images/google-icon.png" alt="Google logo">-->
+<!--                <span>Google</span>-->
+<!--            </button>-->
+<!--        </form>-->
+
+<!--        <div class="login-footer">-->
+<!--            Don't have an account? <a href="/contact-admin">Contact admin</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="/js/login.js"></script>-->
+<!--</body>-->
+<!--</html>-->

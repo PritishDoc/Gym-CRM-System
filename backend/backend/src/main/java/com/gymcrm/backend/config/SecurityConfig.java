@@ -40,19 +40,20 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-
-//                       .anyRequest().permitAll() // ⬅️ Allow ALL requests without authentication
                         .requestMatchers(
+                                "/",
+                                "/login",
                                 "/api/user/register",
                                 "/api/user/verify",
                                 "/api/user/by-email/**",
                                 "/api/user/all",
                                 "/api/plans/**",
                                 "/api/auth/**",
+                                "/logout",
                                 "/error",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
-                                "/dashboard",
+                                "/dashboard/**",
                                 "/css/**",
                                 "/js/**"
                         ).permitAll()
@@ -62,7 +63,17 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .logout(logout -> logout
+                        .logoutUrl("/api/auth/logout")
+                        .logoutSuccessUrl("/")
+                        .permitAll()
+                        .deleteCookies("jwtToken")
+                        .invalidateHttpSession(true)
+                        .addLogoutHandler((request, response, authentication) -> {
+                            // Additional cleanup if needed
+                        })
+                );
 
         return http.build();
     }

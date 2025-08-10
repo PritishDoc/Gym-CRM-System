@@ -7,4 +7,5 @@ import com.gymcrm.backend.dto.RegisterRequest;
 public interface AuthService {
     AuthResponse register(RegisterRequest request);
     AuthResponse authenticate(LoginRequest request);
+    void logout(String token);
 }
