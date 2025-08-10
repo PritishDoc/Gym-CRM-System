@@ -45,6 +45,73 @@ body {
     width: calc(100% - 2rem);
 }
 
+
+/* Navbar Button Alignment Fix
+.navbar-nav .nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .btn-link.nav-link {
+    padding: 0.375rem 0.75rem !important;
+    color: #e2e8f0 !important;
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+}
+
+.navbar-nav .btn-link.nav-link:hover {
+    color: #48bb78 !important;
+    transform: translateY(-1px);
+}
+
+.navbar-nav .btn-success.btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-left: 0.5rem;
+}
+*/
+/* Remove the underline effect from login button
+.navbar-nav .btn-link.nav-link::after {
+    display: none;
+}
+*/
+
+/* Make both look like consistent buttons */
+.navbar-nav .btn-link.nav-link {
+    border: 1px solid #4a5568;
+    border-radius: 0.375rem;
+    padding: 0.375rem 0.75rem !important;
+    color: #e2e8f0 !important;
+    transition: all 0.3s ease;
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.navbar-nav .btn-link.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff !important;
+    border-color: #718096;
+}
+
+.navbar-nav .btn-success.btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Add hover effects to both */
+.navbar-nav .btn-link.nav-link:hover {
+    transform: translateY(-1px);
+}
+
+.navbar-nav .btn-success.btn-sm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
 /* Hero Section with Gradient Overlay */
 .hero-section {
     height: 100vh;

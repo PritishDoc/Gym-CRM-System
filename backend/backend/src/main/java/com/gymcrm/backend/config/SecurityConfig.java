@@ -42,7 +42,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/",
+                                "/about",
                                 "/login",
+                                "/features",
                                 "/api/user/register",
                                 "/api/user/verify",
                                 "/api/user/by-email/**",

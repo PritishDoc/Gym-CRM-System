@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GymFlow CRM | Gym Management Software</title>
-    <link rel="stylesheet" href="/css/home.css">
+    <title>About GymFlow CRM | Gym Management Software</title>
+    <link rel="stylesheet" href="/css/about.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
 
-<!-- Header -->
+<!-- Header (Consistent with your main site) -->
 <header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand fw-bold" href="/">
@@ -21,9 +22,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto gap-3">
-                <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="/features">Features</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/about">About</a></li>
                 <li class="nav-item"><button class="btn btn-link nav-link p-0" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button></li>
                 <li class="nav-item"><button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button></li>
             </ul>
@@ -32,97 +33,181 @@
 </header>
 
 <!-- Hero Section -->
-<section class="hero-section d-flex align-items-center justify-content-center text-center text-white">
-    <div class="container">
-        <h1 class="display-4 fw-bold mb-4">Gym Management Made Simple</h1>
-        <p class="lead fs-4 mb-5">Streamline your gym operations with our all-in-one management solution</p>
-        <div class="d-flex justify-content-center gap-3">
-            <button class="btn btn-success btn-lg px-4 py-3" data-bs-toggle="modal" data-bs-target="#signupModal">Get Started</button>
-            <a href="#features" class="btn btn-outline-light btn-lg px-4 py-3">Learn More</a>
-        </div>
+<section class="about-hero d-flex align-items-center">
+    <div class="container text-center text-white">
+        <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">About GymFlow CRM</h1>
+        <p class="lead fs-4 animate__animated animate__fadeInUp">Revolutionizing gym management for fitness professionals</p>
     </div>
 </section>
 
-<!-- Value Proposition -->
+<!-- Our Story Section -->
 <section class="py-5 bg-white">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <h2 class="fw-bold mb-4">Designed for Fitness Businesses</h2>
-                <p class="lead mb-4">GymFlow CRM helps gym owners and managers save time and improve member experience.</p>
-                <div class="d-flex mb-3">
-                    <div class="me-4 text-primary">
-                        <i class="fas fa-check-circle fa-2x"></i>
-                    </div>
-                    <div>
-                        <h5 class="fw-bold">Centralized Management</h5>
-                        <p>Handle memberships, scheduling, and billing from one platform.</p>
-                    </div>
-                </div>
-                <div class="d-flex mb-3">
-                    <div class="me-4 text-primary">
-                        <i class="fas fa-check-circle fa-2x"></i>
-                    </div>
-                    <div>
-                        <h5 class="fw-bold">Member Retention</h5>
-                        <p>Tools to keep your members engaged and coming back.</p>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <div class="me-4 text-primary">
-                        <i class="fas fa-check-circle fa-2x"></i>
-                    </div>
-                    <div>
-                        <h5 class="fw-bold">Business Insights</h5>
-                        <p>Understand your gym's performance with clear analytics.</p>
-                    </div>
-                </div>
+            <div class="col-lg-6 mb-4 mb-lg-0 animate__animated animate__fadeInLeft">
+                <h2 class="fw-bold mb-4">Our Story</h2>
+                <p class="lead mb-4">Founded in 2023, GymFlow CRM was born out of a passion for fitness and technology.</p>
+                <p>After years of working in the fitness industry, our founders recognized the challenges gym owners face in managing memberships, schedules, and payments. We set out to create a solution that would simplify operations while enhancing member experience.</p>
+                <p>Today, GymFlow CRM powers hundreds of fitness businesses worldwide, helping them grow while staying focused on what matters most - their members.</p>
             </div>
-            <div class="col-lg-6">
-                <div class="dashboard-preview shadow-lg rounded overflow-hidden">
-                    <img src="https://via.placeholder.com/800x500?text=GymFlow+Dashboard" alt="Gym Management Dashboard" class="img-fluid">
+            <div class="col-lg-6 animate__animated animate__fadeInRight">
+                <div class="about-img-container shadow-lg rounded overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                         alt="Gym team working together" class="img-fluid">
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Features Section -->
-<section class="py-5 bg-light" id="features">
+<!-- Mission Section -->
+<section class="py-5 bg-light">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 animate__animated animate__fadeIn">
+                <div class="mission-icon mb-4">
+                    <i class="fas fa-bullseye fa-3x text-primary"></i>
+                </div>
+                <h2 class="fw-bold mb-4">Our Mission</h2>
+                <p class="lead mb-4">To empower fitness businesses with intuitive technology that saves time, increases revenue, and improves member retention.</p>
+                <p>We believe every gym owner should have access to professional-grade tools without the complexity or high costs of traditional systems.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-5 bg-white">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Key Features</h2>
-            <p class="lead text-muted">Everything you need to run your gym efficiently</p>
+            <h2 class="fw-bold mb-3 animate__animated animate__fadeIn">Meet The Team</h2>
+            <p class="lead text-muted animate__animated animate__fadeIn">The passionate people behind GymFlow CRM</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp">
+                <div class="team-card text-center p-4 rounded">
+                    <div class="team-img mb-3 rounded-circle overflow-hidden mx-auto">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team member" class="img-fluid">
+                    </div>
+                    <h4 class="fw-bold mb-1">Alex Johnson</h4>
+                    <p class="text-muted mb-3">Founder & CEO</p>
+                    <div class="social-links">
+                        <a href="#" class="text-primary me-2"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-primary"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <div class="team-card text-center p-4 rounded">
+                    <div class="team-img mb-3 rounded-circle overflow-hidden mx-auto">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team member" class="img-fluid">
+                    </div>
+                    <h4 class="fw-bold mb-1">Sarah Williams</h4>
+                    <p class="text-muted mb-3">Head of Product</p>
+                    <div class="social-links">
+                        <a href="#" class="text-primary me-2"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-primary"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-lg-3 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                <div class="team-card text-center p-4 rounded">
+                    <div class="team-img mb-3 rounded-circle overflow-hidden mx-auto">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Team member" class="img-fluid">
+                    </div>
+                    <h4 class="fw-bold mb-1">Michael Chen</h4>
+                    <p class="text-muted mb-3">Lead Developer</p>
+                    <div class="social-links">
+                        <a href="#" class="text-primary me-2"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-primary"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 mb-4 mb-md-0 animate__animated animate__fadeIn" style="animation-delay: 0s;">
+                <div class="stat-number display-4 fw-bold mb-2">250+</div>
+                <div class="stat-label">Gyms Powered</div>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0 animate__animated animate__fadeIn" style="animation-delay: 0.2s;">
+                <div class="stat-number display-4 fw-bold mb-2">50K+</div>
+                <div class="stat-label">Members Managed</div>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0 animate__animated animate__fadeIn" style="animation-delay: 0.4s;">
+                <div class="stat-number display-4 fw-bold mb-2">24/7</div>
+                <div class="stat-label">Support Available</div>
+            </div>
+            <div class="col-md-3 animate__animated animate__fadeIn" style="animation-delay: 0.6s;">
+                <div class="stat-number display-4 fw-bold mb-2">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">What Our Customers Say</h2>
+            <p class="lead text-muted">Hear from gym owners who transformed their business</p>
         </div>
 
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="feature-card h-100 p-4 rounded">
-                    <div class="icon-box bg-primary text-white rounded-circle mb-4">
-                        <i class="fas fa-users fa-2x"></i>
+            <div class="col-md-4 animate__animated animate__fadeInUp">
+                <div class="testimonial-card p-4 rounded h-100">
+                    <div class="quote-icon mb-3 text-primary">
+                        <i class="fas fa-quote-left fa-2x"></i>
                     </div>
-                    <h4 class="fw-bold mb-3">Member Management</h4>
-                    <p>Track member details, attendance, and membership status in one place.</p>
+                    <p class="mb-4">"GymFlow CRM has saved us countless hours of administrative work. Our member retention has increased by 30% since implementation."</p>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Customer" class="rounded-circle me-3" width="50">
+                        <div>
+                            <h6 class="fw-bold mb-0">Lisa Rodriguez</h6>
+                            <small class="text-muted">Owner, FitLife Gym</small>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="feature-card h-100 p-4 rounded">
-                    <div class="icon-box bg-success text-white rounded-circle mb-4">
-                        <i class="fas fa-calendar-alt fa-2x"></i>
+            <div class="col-md-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <div class="testimonial-card p-4 rounded h-100">
+                    <div class="quote-icon mb-3 text-primary">
+                        <i class="fas fa-quote-left fa-2x"></i>
                     </div>
-                    <h4 class="fw-bold mb-3">Class Scheduling</h4>
-                    <p>Easily manage class schedules, trainer assignments, and member bookings.</p>
+                    <p class="mb-4">"The reporting features alone are worth the price. We can now make data-driven decisions about our class schedules and staffing."</p>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/men/81.jpg" alt="Customer" class="rounded-circle me-3" width="50">
+                        <div>
+                            <h6 class="fw-bold mb-0">James Wilson</h6>
+                            <small class="text-muted">Manager, PowerHouse Fitness</small>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="feature-card h-100 p-4 rounded">
-                    <div class="icon-box bg-info text-white rounded-circle mb-4">
-                        <i class="fas fa-credit-card fa-2x"></i>
+            <div class="col-md-4 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                <div class="testimonial-card p-4 rounded h-100">
+                    <div class="quote-icon mb-3 text-primary">
+                        <i class="fas fa-quote-left fa-2x"></i>
                     </div>
-                    <h4 class="fw-bold mb-3">Billing & Payments</h4>
-                    <p>Automated billing and payment processing to save you time.</p>
+                    <p class="mb-4">"Switching to GymFlow was the best decision we made. The onboarding was smooth and our members love the new app integration."</p>
+                    <div class="d-flex align-items-center">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Customer" class="rounded-circle me-3" width="50">
+                        <div>
+                            <h6 class="fw-bold mb-0">Emma Thompson</h6>
+                            <small class="text-muted">Director, Urban Fitness Club</small>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -130,16 +215,18 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-5 bg-primary text-white text-center">
-    <div class="container">
-        <h2 class="fw-bold mb-4">Ready to Simplify Your Gym Management?</h2>
-        <p class="lead mb-5">Get started with GymFlow CRM today</p>
-        <button class="btn btn-light btn-lg px-4 py-3" data-bs-toggle="modal" data-bs-target="#signupModal">Create Your Account</button>
-<!--        <a href="/register" class="btn btn-light btn-lg px-4 py-3">Create Your Account</a>-->
+<section class="py-5 bg-white">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4">Ready to Transform Your Gym Management?</h2>
+        <p class="lead mb-5">Join hundreds of fitness businesses already using GymFlow CRM</p>
+        <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-primary btn-lg px-4 py-3" data-bs-toggle="modal" data-bs-target="#signupModal">Start Free Trial</button>
+            <a href="/features" class="btn btn-outline-primary btn-lg px-4 py-3">Explore Features</a>
+        </div>
     </div>
 </section>
 
-<!-- Footer -->
+<!-- Footer (Consistent with your main site) -->
 <footer class="bg-dark text-white py-4">
     <div class="container">
         <div class="row">
@@ -167,6 +254,7 @@
     </div>
 </footer>
 
+<!-- Include your existing Login and Signup Modals here -->
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -345,8 +433,25 @@
     </div>
 </div>
 
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/auth.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script>
+    // Initialize animations
+    new WOW().init();
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+<script src="/js/about.js"></script>
 
 </body>
 </html>

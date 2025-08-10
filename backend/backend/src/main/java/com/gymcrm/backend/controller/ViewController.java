@@ -11,8 +11,13 @@ public class ViewController {
         return "home";
     }
 
-    @GetMapping("/login")
-    public String showLoginPage() {
-        return "login"; // This will resolve to src/main/resources/templates/login.html
+    @GetMapping("/about")
+    public String showAboutPage(){
+        return "about";
     }
+
+    @GetMapping("/features")
+        public String showFeatuesPage(){
+            return "features";
+        }
 }
