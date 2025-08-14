@@ -64,4 +64,5 @@ public class JwtService {
     }
 
     // ... rest of your JWT methods ...
+    
 }

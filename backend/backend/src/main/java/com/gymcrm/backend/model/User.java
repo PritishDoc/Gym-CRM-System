@@ -89,4 +89,8 @@ public class User implements UserDetails {
     public void deactivateAccount() {
         this.active = false;
     }
+
+//
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Attendance> attendances;
 }

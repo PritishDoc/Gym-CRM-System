@@ -20,6 +20,7 @@
 		<jjwt.version>0.11.5</jjwt.version>
 		<lombok.version>1.18.28</lombok.version>
 		<springdoc.version>2.1.0</springdoc.version>
+		<modelmapper.version>3.1.1</modelmapper.version>
 	</properties>
 
 	<dependencies>
@@ -81,6 +82,13 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>${jjwt.version}</version>
 			<scope>runtime</scope>
+		</dependency>
+
+		<!-- ModelMapper -->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>${modelmapper.version}</version>
 		</dependency>
 
 		<!-- MapStruct -->
