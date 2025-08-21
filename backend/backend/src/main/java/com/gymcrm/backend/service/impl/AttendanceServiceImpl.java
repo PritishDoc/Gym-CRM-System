@@ -7,6 +7,7 @@ import com.gymcrm.backend.repository.AttendanceRepository;
 import com.gymcrm.backend.repository.UserRepository;
 import com.gymcrm.backend.service.AttendanceService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,10 +28,12 @@ public class AttendanceServiceImpl implements AttendanceService {
     }
 
     @Override
+    @Transactional
     public AttendanceDto checkIn(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow();
-        LocalDate today = LocalDate.now();
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
 
+        LocalDate today = LocalDate.now();
         Attendance attendance = attendanceRepository.findByUserIdAndDate(userId, today);
 
         if (attendance == null) {
@@ -42,10 +45,18 @@ public class AttendanceServiceImpl implements AttendanceService {
 
         Attendance saved = attendanceRepository.save(attendance);
 
-        return new AttendanceDto(saved.getUser().getId(), saved.getUser().getName(), saved.getDate(), saved.isPresent(), saved.getCheckInTime(), saved.getCheckOutTime());
+        return new AttendanceDto(
+                saved.getUser().getId(),
+                saved.getUser().getName(),
+                saved.getDate(),
+                saved.isPresent(),
+                saved.getCheckInTime(),
+                saved.getCheckOutTime()
+        );
     }
 
     @Override
+    @Transactional
     public AttendanceDto checkOut(Long userId) {
         LocalDate today = LocalDate.now();
         Attendance attendance = attendanceRepository.findByUserIdAndDate(userId, today);
@@ -57,27 +68,45 @@ public class AttendanceServiceImpl implements AttendanceService {
         attendance.setCheckOutTime(LocalDateTime.now());
         Attendance saved = attendanceRepository.save(attendance);
 
-        return new AttendanceDto(saved.getUser().getId(), saved.getUser().getName(), saved.getDate(), saved.isPresent(), saved.getCheckInTime(), saved.getCheckOutTime());
+        return new AttendanceDto(
+                saved.getUser().getId(),
+                saved.getUser().getName(),
+                saved.getDate(),
+                saved.isPresent(),
+                saved.getCheckInTime(),
+                saved.getCheckOutTime()
+        );
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<AttendanceDto> getTodayAttendance() {
         LocalDate today = LocalDate.now();
         return attendanceRepository.findByDate(today)
                 .stream()
-                .map(a -> new AttendanceDto(a.getUser().getId(), a.getUser().getName(), a.getDate(), a.isPresent(), a.getCheckInTime(), a.getCheckOutTime()))
+                .map(a -> new AttendanceDto(
+                        a.getUser().getId(),
+                        a.getUser().getName(),
+                        a.getDate(),
+                        a.isPresent(),
+                        a.getCheckInTime(),
+                        a.getCheckOutTime()
+                ))
                 .toList();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Map<Long, Long> getMonthlyAttendance(int year, int month) {
         YearMonth yearMonth = YearMonth.of(year, month);
         LocalDate start = yearMonth.atDay(1);
         LocalDate end = yearMonth.atEndOfMonth();
 
-        return attendanceRepository.findAll()
+        return attendanceRepository.findByDateBetween(start, end) // ✅ only query required range
                 .stream()
-                .filter(a -> !a.getDate().isBefore(start) && !a.getDate().isAfter(end))
-                .collect(Collectors.groupingBy(a -> a.getUser().getId(), Collectors.counting()));
+                .collect(Collectors.groupingBy(
+                        a -> a.getUser().getId(),
+                        Collectors.counting()
+                ));
     }
 }
