@@ -7,7 +7,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -90,7 +89,11 @@ public class User implements UserDetails {
         this.active = false;
     }
 
-//
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Attendance> attendances;
+    // Alias for compatibility with code expecting getName()
+    public String getName() {
+        return this.fullname;
+    }
+
+    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<Attendance> attendances;
 }

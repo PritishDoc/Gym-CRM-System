@@ -1,135 +1,83 @@
-//package com.gymcrm.backend.service.impl;
-//
-//import com.gymcrm.backend.dto.AttendanceDTO;
-//import com.gymcrm.backend.dto.AttendanceRequest;
-//import com.gymcrm.backend.exception.ResourceNotFoundException;
-//import com.gymcrm.backend.model.Attendance;
-//import com.gymcrm.backend.model.User;
-//import com.gymcrm.backend.repository.AttendanceRepository;
-//import com.gymcrm.backend.repository.UserRepository;
-//import com.gymcrm.backend.service.AttendanceService;
-//import lombok.RequiredArgsConstructor;
-//import org.modelmapper.ModelMapper;
-//import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
-//
-//import java.time.Duration;
-//import java.time.LocalDateTime;
-//import java.util.List;
-//import java.util.stream.Collectors;
-//
-//@Service
-//@RequiredArgsConstructor
-//@Transactional
-//public class AttendanceServiceImpl implements AttendanceService {
-//
-//    private final AttendanceRepository attendanceRepository;
-//    private final UserRepository userRepository;
-//    private final ModelMapper modelMapper;
-//
-//    @Override
-//    public AttendanceDTO checkInUser(AttendanceRequest request) {
-//        User user = userRepository.findById(request.getUserId())
-//                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + request.getUserId()));
-//
-//        if (attendanceRepository.existsByUserIdAndCheckOutTimeIsNull(user.getId())) {
-//            throw new IllegalStateException("User already has an active check-in session");
-//        }
-//
-//        Attendance attendance = Attendance.builder()
-//                .user(user)
-//                .checkInTime(LocalDateTime.now())
-//                .status("ACTIVE")
-//                .checkInNotes(request.getCheckInNotes())
-//                .gymId(request.getGymId())
-//                .build();
-//
-//        Attendance savedAttendance = attendanceRepository.save(attendance);
-//        return modelMapper.map(savedAttendance, AttendanceDTO.class);
-//    }
-//
-//    @Override
-//    public AttendanceDTO checkOutUser(Long attendanceId) {
-//        Attendance attendance = attendanceRepository.findById(attendanceId)
-//                .orElseThrow(() -> new ResourceNotFoundException("Attendance not found with id: " + attendanceId));
-//
-//        if (attendance.getCheckOutTime() != null) {
-//            throw new IllegalStateException("User already checked out");
-//        }
-//
-//        attendance.setCheckOutTime(LocalDateTime.now());
-//        attendance.setStatus("COMPLETED");
-//
-//        // Calculate session duration
-//        Duration duration = Duration.between(attendance.getCheckInTime(), attendance.getCheckOutTime());
-//        attendance.setDurationMinutes(duration.toMinutes());
-//
-//        Attendance updatedAttendance = attendanceRepository.save(attendance);
-//        return modelMapper.map(updatedAttendance, AttendanceDTO.class);
-//    }
-//
-//    @Override
-//    public List<AttendanceDTO> getAllAttendanceRecords() {
-//        return attendanceRepository.findAll().stream()
-//                .map(attendance -> modelMapper.map(attendance, AttendanceDTO.class))
-//                .collect(Collectors.toList());
-//    }
-//
-//    @Override
-//    public List<AttendanceDTO> getAttendanceByUser(Long userId) {
-//        if (!userRepository.existsById(userId)) {
-//            throw new ResourceNotFoundException("User not found with id: " + userId);
-//        }
-//
-//        return attendanceRepository.findByUserId(userId).stream()
-//                .map(attendance -> modelMapper.map(attendance, AttendanceDTO.class))
-//                .collect(Collectors.toList());
-//    }
-//
-//    @Override
-//    public List<AttendanceDTO> getActiveCheckIns() {
-//        return attendanceRepository.findByCheckOutTimeIsNull().stream()
-//                .map(attendance -> modelMapper.map(attendance, AttendanceDTO.class))
-//                .collect(Collectors.toList());
-//    }
-//
-//    @Override
-//    public AttendanceDTO getAttendanceById(Long attendanceId) {
-//        Attendance attendance = attendanceRepository.findById(attendanceId)
-//                .orElseThrow(() -> new ResourceNotFoundException("Attendance not found with id: " + attendanceId));
-//        return modelMapper.map(attendance, AttendanceDTO.class);
-//    }
-//
-//    @Override
-//    public AttendanceDTO updateCheckOutNotes(Long attendanceId, String notes) {
-//        Attendance attendance = attendanceRepository.findById(attendanceId)
-//                .orElseThrow(() -> new ResourceNotFoundException("Attendance not found with id: " + attendanceId));
-//
-//        attendance.setCheckOutNotes(notes);
-//        Attendance updatedAttendance = attendanceRepository.save(attendance);
-//        return modelMapper.map(updatedAttendance, AttendanceDTO.class);
-//    }
-//
-//    @Override
-//    public List<AttendanceDTO> getAttendanceBetweenDates(LocalDateTime start, LocalDateTime end) {
-//        return attendanceRepository.findByCheckInTimeBetween(start, end).stream()
-//                .map(attendance -> modelMapper.map(attendance, AttendanceDTO.class))
-//                .collect(Collectors.toList());
-//    }
-//
-//    @Override
-//    public Double getUserAverageSessionDuration(Long userId) {
-//        List<Attendance> completedSessions = attendanceRepository
-//                .findByUserIdAndCheckOutTimeIsNotNull(userId);
-//
-//        if (completedSessions.isEmpty()) {
-//            return 0.0;
-//        }
-//
-//        double totalMinutes = completedSessions.stream()
-//                .mapToDouble(Attendance::getDurationMinutes)
-//                .sum();
-//
-//        return totalMinutes / completedSessions.size();
-//    }
-//}
+package com.gymcrm.backend.service.impl;
+
+import com.gymcrm.backend.dto.AttendanceDto;
+import com.gymcrm.backend.model.Attendance;
+import com.gymcrm.backend.model.User;
+import com.gymcrm.backend.repository.AttendanceRepository;
+import com.gymcrm.backend.repository.UserRepository;
+import com.gymcrm.backend.service.AttendanceService;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.YearMonth;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+@Service
+public class AttendanceServiceImpl implements AttendanceService {
+
+    private final AttendanceRepository attendanceRepository;
+    private final UserRepository userRepository;
+
+    public AttendanceServiceImpl(AttendanceRepository attendanceRepository, UserRepository userRepository) {
+        this.attendanceRepository = attendanceRepository;
+        this.userRepository = userRepository;
+    }
+
+    @Override
+    public AttendanceDto checkIn(Long userId) {
+        User user = userRepository.findById(userId).orElseThrow();
+        LocalDate today = LocalDate.now();
+
+        Attendance attendance = attendanceRepository.findByUserIdAndDate(userId, today);
+
+        if (attendance == null) {
+            attendance = new Attendance(user, today, true, LocalDateTime.now(), null);
+        } else {
+            attendance.setCheckInTime(LocalDateTime.now());
+            attendance.setPresent(true);
+        }
+
+        Attendance saved = attendanceRepository.save(attendance);
+
+        return new AttendanceDto(saved.getUser().getId(), saved.getUser().getName(), saved.getDate(), saved.isPresent(), saved.getCheckInTime(), saved.getCheckOutTime());
+    }
+
+    @Override
+    public AttendanceDto checkOut(Long userId) {
+        LocalDate today = LocalDate.now();
+        Attendance attendance = attendanceRepository.findByUserIdAndDate(userId, today);
+
+        if (attendance == null) {
+            throw new RuntimeException("User has not checked in today.");
+        }
+
+        attendance.setCheckOutTime(LocalDateTime.now());
+        Attendance saved = attendanceRepository.save(attendance);
+
+        return new AttendanceDto(saved.getUser().getId(), saved.getUser().getName(), saved.getDate(), saved.isPresent(), saved.getCheckInTime(), saved.getCheckOutTime());
+    }
+
+    @Override
+    public List<AttendanceDto> getTodayAttendance() {
+        LocalDate today = LocalDate.now();
+        return attendanceRepository.findByDate(today)
+                .stream()
+                .map(a -> new AttendanceDto(a.getUser().getId(), a.getUser().getName(), a.getDate(), a.isPresent(), a.getCheckInTime(), a.getCheckOutTime()))
+                .toList();
+    }
+
+    @Override
+    public Map<Long, Long> getMonthlyAttendance(int year, int month) {
+        YearMonth yearMonth = YearMonth.of(year, month);
+        LocalDate start = yearMonth.atDay(1);
+        LocalDate end = yearMonth.atEndOfMonth();
+
+        return attendanceRepository.findAll()
+                .stream()
+                .filter(a -> !a.getDate().isBefore(start) && !a.getDate().isAfter(end))
+                .collect(Collectors.groupingBy(a -> a.getUser().getId(), Collectors.counting()));
+    }
+}
