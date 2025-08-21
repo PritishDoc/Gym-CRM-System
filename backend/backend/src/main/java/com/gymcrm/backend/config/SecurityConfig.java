@@ -53,6 +53,7 @@ public class SecurityConfig {
                                 "/api/auth/**",
                                 "/api/payments/**",
                                 "/api/attendance/**",
+                                "/api/email/**",
                                 "/logout",
                                 "/error",
                                 "/v3/api-docs/**",
