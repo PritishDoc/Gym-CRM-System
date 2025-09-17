@@ -21,63 +21,136 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+//
+//import java.util.Arrays;
+//import java.util.List;
+//
+//@Configuration
+//@EnableWebSecurity
+//@EnableMethodSecurity
+//@RequiredArgsConstructor
+//public class SecurityConfig {
+//
+//    private final JwtAuthFilter jwtAuthFilter;
+//    private final UserDetailsService userDetailsService;
+//
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers(
+//                                "/",
+//                                "/about",
+//                                "/login",
+//                                "/features",
+//                                "/api/user/register",
+//                                "/api/user/verify",
+//                                "/api/user/by-email/**",
+//                                "/api/user/all",
+//                                "/api/plans/**",
+//                                "/api/auth/**",
+//                                "/api/payments/**",
+//                                "/api/attendance/**",
+//                                "/api/email/**",
+//                                "/logout",
+//                                "/error",
+//                                "/v3/api-docs/**",
+//                                "/swagger-ui/**",
+//                                "/dashboard/**",
+//                                "/css/**",
+//                                "/js/**"
+//                        ).permitAll()
+//                        .anyRequest().authenticated()
+//                )
+//                .sessionManagement(session -> session
+//                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                )
+//                .authenticationProvider(authenticationProvider())
+//                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+//                .logout(logout -> logout
+//                        .logoutUrl("/api/auth/logout")
+//                        .logoutSuccessUrl("/")
+//                        .permitAll()
+//                        .deleteCookies("jwtToken")
+//                        .invalidateHttpSession(true)
+//                        .addLogoutHandler((request, response, authentication) -> {
+//                            // Additional cleanup if needed
+//                        })
+//                );
+//
+//        return http.build();
+//    }
+//
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//        configuration.setAllowedOrigins(List.of("*"));
+//        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+//        configuration.setAllowedHeaders(List.of("*"));
+//        configuration.setExposedHeaders(List.of("Authorization"));
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//        return source;
+//    }
+//
+//    @Bean
+//    public AuthenticationProvider authenticationProvider() {
+//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+//        authProvider.setUserDetailsService(userDetailsService);
+//        authProvider.setPasswordEncoder(passwordEncoder());
+//        return authProvider;
+//    }
+//
+//    @Bean
+//    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+//        return config.getAuthenticationManager();
+//    }
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+//}
+
 
 import java.util.Arrays;
 import java.util.List;
 
 @Configuration
-@EnableWebSecurity
-@EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
     private final JwtAuthFilter jwtAuthFilter;
-    private final UserDetailsService userDetailsService;
+    private final org.springframework.security.core.userdetails.UserDetailsService userDetailsService;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/",
-                                "/about",
-                                "/login",
-                                "/features",
-                                "/api/user/register",
-                                "/api/user/verify",
-                                "/api/user/by-email/**",
-                                "/api/user/all",
-                                "/api/plans/**",
-                                "/api/auth/**",
-                                "/api/payments/**",
-                                "/api/attendance/**",
-                                "/api/email/**",
-                                "/logout",
-                                "/error",
-                                "/v3/api-docs/**",
-                                "/swagger-ui/**",
-                                "/dashboard/**",
-                                "/css/**",
-                                "/js/**"
+                                "/", "/about", "/login", "/features",
+                                "/api/user/register", "/api/user/verify", "/api/user/by-email/**", "/api/user/all",
+                                "/api/plans/**", "/api/auth/**", "/api/payments/**", "/api/attendance/**", "/api/email/**",
+                                "/logout", "/error", "/v3/api-docs/**", "/swagger-ui/**", "/dashboard/**",
+                                "/css/**", "/js/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                        .sessionCreationPolicy(org.springframework.security.config.http.SessionCreationPolicy.STATELESS)
                 )
-                .authenticationProvider(authenticationProvider())
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .authenticationProvider(authenticationProvider()) // keep your provider bean below
+                .addFilterBefore(jwtAuthFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class)
                 .logout(logout -> logout
                         .logoutUrl("/api/auth/logout")
                         .logoutSuccessUrl("/")
                         .permitAll()
                         .deleteCookies("jwtToken")
                         .invalidateHttpSession(true)
-                        .addLogoutHandler((request, response, authentication) -> {
-                            // Additional cleanup if needed
-                        })
                 );
 
         return http.build();
@@ -86,15 +159,22 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*"));
+
+        // IMPORTANT: Use the exact frontend origin (no "*") when credentials are used
+        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setExposedHeaders(List.of("Authorization"));
+        configuration.setAllowCredentials(true);          // <---- must be true if using credentials: 'include'
+        configuration.setMaxAge(3600L);
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 
+    // keep your existing beans unchanged
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -112,4 +192,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }

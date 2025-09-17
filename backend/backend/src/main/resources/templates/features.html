@@ -1,495 +1,495 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Features | GymFlow CRM - Gym Management Software</title>
-    <link rel="stylesheet" href="/css/features.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Features | GymFlow CRM - Gym Management Software</title>-->
+<!--    <link rel="stylesheet" href="/css/features.css">-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">-->
+<!--</head>-->
+<!--<body>-->
 
-<!-- Header (Consistent with your main site) -->
-<header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="/">
-            <i class="fas fa-dumbbell me-2"></i>GymFlow CRM
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto gap-3">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link active" href="/features">Features</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                <li class="nav-item"><button class="btn btn-link nav-link p-0" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button></li>
-                <li class="nav-item"><button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button></li>
-            </ul>
-        </div>
-    </div>
-</header>
+<!--&lt;!&ndash; Header (Consistent with your main site) &ndash;&gt;-->
+<!--<header class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">-->
+<!--    <div class="container">-->
+<!--        <a class="navbar-brand fw-bold" href="/">-->
+<!--            <i class="fas fa-dumbbell me-2"></i>GymFlow CRM-->
+<!--        </a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--            <ul class="navbar-nav ms-auto gap-3">-->
+<!--                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link active" href="/features">Features</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>-->
+<!--                <li class="nav-item"><button class="btn btn-link nav-link p-0" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button></li>-->
+<!--                <li class="nav-item"><button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</button></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
 
-<!-- Hero Section -->
-<section class="features-hero d-flex align-items-center">
-    <div class="container text-center text-white">
-        <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">Powerful Features</h1>
-        <p class="lead fs-4 animate__animated animate__fadeInUp">Everything you need to run your fitness business efficiently</p>
-    </div>
-</section>
+<!--&lt;!&ndash; Hero Section &ndash;&gt;-->
+<!--<section class="features-hero d-flex align-items-center">-->
+<!--    <div class="container text-center text-white">-->
+<!--        <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInDown">Powerful Features</h1>-->
+<!--        <p class="lead fs-4 animate__animated animate__fadeInUp">Everything you need to run your fitness business efficiently</p>-->
+<!--    </div>-->
+<!--</section>-->
 
-<!-- Features Grid Section -->
-<section class="py-5 bg-white">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Core Features</h2>
-            <p class="lead text-muted">Comprehensive tools designed for gym owners</p>
-        </div>
+<!--&lt;!&ndash; Features Grid Section &ndash;&gt;-->
+<!--<section class="py-5 bg-white">-->
+<!--    <div class="container">-->
+<!--        <div class="text-center mb-5">-->
+<!--            <h2 class="fw-bold mb-3">Core Features</h2>-->
+<!--            <p class="lead text-muted">Comprehensive tools designed for gym owners</p>-->
+<!--        </div>-->
 
-        <div class="row g-4">
-            <!-- Feature 1 -->
-            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">
-                <div class="feature-card h-100 p-4 rounded">
-                    <div class="feature-icon bg-primary text-white rounded-circle mb-4">
-                        <i class="fas fa-users fa-2x"></i>
-                    </div>
-                    <h4 class="fw-bold mb-3">Member Management</h4>
-                    <p>Track member details, attendance, and membership status all in one place with our intuitive dashboard.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Digital member profiles</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Attendance tracking</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Membership status monitoring</li>
-                    </ul>
-                </div>
-            </div>
+<!--        <div class="row g-4">-->
+<!--            &lt;!&ndash; Feature 1 &ndash;&gt;-->
+<!--            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp">-->
+<!--                <div class="feature-card h-100 p-4 rounded">-->
+<!--                    <div class="feature-icon bg-primary text-white rounded-circle mb-4">-->
+<!--                        <i class="fas fa-users fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <h4 class="fw-bold mb-3">Member Management</h4>-->
+<!--                    <p>Track member details, attendance, and membership status all in one place with our intuitive dashboard.</p>-->
+<!--                    <ul class="feature-list">-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Digital member profiles</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Attendance tracking</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Membership status monitoring</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <!-- Feature 2 -->
-            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-                <div class="feature-card h-100 p-4 rounded">
-                    <div class="feature-icon bg-success text-white rounded-circle mb-4">
-                        <i class="fas fa-calendar-alt fa-2x"></i>
-                    </div>
-                    <h4 class="fw-bold mb-3">Class Scheduling</h4>
-                    <p>Easily manage class schedules, trainer assignments, and member bookings with our visual calendar.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Drag-and-drop scheduling</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Automated reminders</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Capacity management</li>
-                    </ul>
-                </div>
-            </div>
+<!--            &lt;!&ndash; Feature 2 &ndash;&gt;-->
+<!--            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">-->
+<!--                <div class="feature-card h-100 p-4 rounded">-->
+<!--                    <div class="feature-icon bg-success text-white rounded-circle mb-4">-->
+<!--                        <i class="fas fa-calendar-alt fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <h4 class="fw-bold mb-3">Class Scheduling</h4>-->
+<!--                    <p>Easily manage class schedules, trainer assignments, and member bookings with our visual calendar.</p>-->
+<!--                    <ul class="feature-list">-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Drag-and-drop scheduling</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Automated reminders</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Capacity management</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <!-- Feature 3 -->
-            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                <div class="feature-card h-100 p-4 rounded">
-                    <div class="feature-icon bg-info text-white rounded-circle mb-4">
-                        <i class="fas fa-credit-card fa-2x"></i>
-                    </div>
-                    <h4 class="fw-bold mb-3">Billing & Payments</h4>
-                    <p>Automated billing and payment processing to save you time and reduce administrative work.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Recurring billing</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Multiple payment methods</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Financial reporting</li>
-                    </ul>
-                </div>
-            </div>
+<!--            &lt;!&ndash; Feature 3 &ndash;&gt;-->
+<!--            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">-->
+<!--                <div class="feature-card h-100 p-4 rounded">-->
+<!--                    <div class="feature-icon bg-info text-white rounded-circle mb-4">-->
+<!--                        <i class="fas fa-credit-card fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <h4 class="fw-bold mb-3">Billing & Payments</h4>-->
+<!--                    <p>Automated billing and payment processing to save you time and reduce administrative work.</p>-->
+<!--                    <ul class="feature-list">-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Recurring billing</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Multiple payment methods</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Financial reporting</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <!-- Feature 4 -->
-            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
-                <div class="feature-card h-100 p-4 rounded">
-                    <div class="feature-icon bg-warning text-white rounded-circle mb-4">
-                        <i class="fas fa-chart-line fa-2x"></i>
-                    </div>
-                    <h4 class="fw-bold mb-3">Business Analytics</h4>
-                    <p>Understand your gym's performance with clear analytics and actionable insights.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Revenue tracking</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Member retention metrics</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Custom report generation</li>
-                    </ul>
-                </div>
-            </div>
+<!--            &lt;!&ndash; Feature 4 &ndash;&gt;-->
+<!--            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">-->
+<!--                <div class="feature-card h-100 p-4 rounded">-->
+<!--                    <div class="feature-icon bg-warning text-white rounded-circle mb-4">-->
+<!--                        <i class="fas fa-chart-line fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <h4 class="fw-bold mb-3">Business Analytics</h4>-->
+<!--                    <p>Understand your gym's performance with clear analytics and actionable insights.</p>-->
+<!--                    <ul class="feature-list">-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Revenue tracking</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Member retention metrics</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Custom report generation</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <!-- Feature 5 -->
-            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-                <div class="feature-card h-100 p-4 rounded">
-                    <div class="feature-icon bg-danger text-white rounded-circle mb-4">
-                        <i class="fas fa-mobile-alt fa-2x"></i>
-                    </div>
-                    <h4 class="fw-bold mb-3">Member App</h4>
-                    <p>Give your members control with our branded mobile app for bookings and payments.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Class bookings</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Payment history</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Progress tracking</li>
-                    </ul>
-                </div>
-            </div>
+<!--            &lt;!&ndash; Feature 5 &ndash;&gt;-->
+<!--            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">-->
+<!--                <div class="feature-card h-100 p-4 rounded">-->
+<!--                    <div class="feature-icon bg-danger text-white rounded-circle mb-4">-->
+<!--                        <i class="fas fa-mobile-alt fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <h4 class="fw-bold mb-3">Member App</h4>-->
+<!--                    <p>Give your members control with our branded mobile app for bookings and payments.</p>-->
+<!--                    <ul class="feature-list">-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Class bookings</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Payment history</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Progress tracking</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <!-- Feature 6 -->
-            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
-                <div class="feature-card h-100 p-4 rounded">
-                    <div class="feature-icon bg-purple text-white rounded-circle mb-4">
-                        <i class="fas fa-envelope fa-2x"></i>
-                    </div>
-                    <h4 class="fw-bold mb-3">Communication Tools</h4>
-                    <p>Engage with your members through automated emails, SMS, and in-app notifications.</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Bulk messaging</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Targeted campaigns</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i>Automated reminders</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--            &lt;!&ndash; Feature 6 &ndash;&gt;-->
+<!--            <div class="col-md-6 col-lg-4 animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">-->
+<!--                <div class="feature-card h-100 p-4 rounded">-->
+<!--                    <div class="feature-icon bg-purple text-white rounded-circle mb-4">-->
+<!--                        <i class="fas fa-envelope fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <h4 class="fw-bold mb-3">Communication Tools</h4>-->
+<!--                    <p>Engage with your members through automated emails, SMS, and in-app notifications.</p>-->
+<!--                    <ul class="feature-list">-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Bulk messaging</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Targeted campaigns</li>-->
+<!--                        <li><i class="fas fa-check-circle text-success me-2"></i>Automated reminders</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
-<!-- Feature Highlights Section -->
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="feature-highlight-img shadow-lg rounded overflow-hidden animate__animated animate__fadeInLeft">
-                    <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                         alt="Gym management dashboard" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-lg-6 animate__animated animate__fadeInRight">
-                <h2 class="fw-bold mb-4">Real-time Dashboard</h2>
-                <p class="lead mb-4">Get instant visibility into your gym's performance with our comprehensive dashboard.</p>
-                <div class="d-flex mb-3">
-                    <div class="me-4 text-primary">
-                        <i class="fas fa-check-circle fa-2x"></i>
-                    </div>
-                    <div>
-                        <h5 class="fw-bold">At-a-glance Metrics</h5>
-                        <p>See key performance indicators like attendance, revenue, and member growth in real-time.</p>
-                    </div>
-                </div>
-                <div class="d-flex mb-3">
-                    <div class="me-4 text-primary">
-                        <i class="fas fa-check-circle fa-2x"></i>
-                    </div>
-                    <div>
-                        <h5 class="fw-bold">Customizable Widgets</h5>
-                        <p>Arrange and prioritize the information that matters most to your business.</p>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <div class="me-4 text-primary">
-                        <i class="fas fa-check-circle fa-2x"></i>
-                    </div>
-                    <div>
-                        <h5 class="fw-bold">Mobile Responsive</h5>
-                        <p>Access your dashboard from anywhere, on any device.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--&lt;!&ndash; Feature Highlights Section &ndash;&gt;-->
+<!--<section class="py-5 bg-light">-->
+<!--    <div class="container">-->
+<!--        <div class="row align-items-center">-->
+<!--            <div class="col-lg-6 mb-4 mb-lg-0">-->
+<!--                <div class="feature-highlight-img shadow-lg rounded overflow-hidden animate__animated animate__fadeInLeft">-->
+<!--                    <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"-->
+<!--                         alt="Gym management dashboard" class="img-fluid">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6 animate__animated animate__fadeInRight">-->
+<!--                <h2 class="fw-bold mb-4">Real-time Dashboard</h2>-->
+<!--                <p class="lead mb-4">Get instant visibility into your gym's performance with our comprehensive dashboard.</p>-->
+<!--                <div class="d-flex mb-3">-->
+<!--                    <div class="me-4 text-primary">-->
+<!--                        <i class="fas fa-check-circle fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <h5 class="fw-bold">At-a-glance Metrics</h5>-->
+<!--                        <p>See key performance indicators like attendance, revenue, and member growth in real-time.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="d-flex mb-3">-->
+<!--                    <div class="me-4 text-primary">-->
+<!--                        <i class="fas fa-check-circle fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <h5 class="fw-bold">Customizable Widgets</h5>-->
+<!--                        <p>Arrange and prioritize the information that matters most to your business.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="d-flex">-->
+<!--                    <div class="me-4 text-primary">-->
+<!--                        <i class="fas fa-check-circle fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <div>-->
+<!--                        <h5 class="fw-bold">Mobile Responsive</h5>-->
+<!--                        <p>Access your dashboard from anywhere, on any device.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
-<!-- Testimonials Section -->
-<section class="py-5 bg-white">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold mb-3">Trusted by Fitness Professionals</h2>
-            <p class="lead text-muted">What gym owners say about our features</p>
-        </div>
+<!--&lt;!&ndash; Testimonials Section &ndash;&gt;-->
+<!--<section class="py-5 bg-white">-->
+<!--    <div class="container">-->
+<!--        <div class="text-center mb-5">-->
+<!--            <h2 class="fw-bold mb-3">Trusted by Fitness Professionals</h2>-->
+<!--            <p class="lead text-muted">What gym owners say about our features</p>-->
+<!--        </div>-->
 
-        <div class="row g-4">
-            <div class="col-md-4 animate__animated animate__fadeInUp">
-                <div class="testimonial-card p-4 rounded h-100">
-                    <div class="quote-icon mb-3 text-primary">
-                        <i class="fas fa-quote-left fa-2x"></i>
-                    </div>
-                    <p class="mb-4">"The member management system alone has saved me 10+ hours per week. I can now focus on training instead of paperwork."</p>
-                    <div class="d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="rounded-circle me-3" width="50">
-                        <div>
-                            <h6 class="fw-bold mb-0">Mark Johnson</h6>
-                            <small class="text-muted">Owner, Iron Peak Gym</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--        <div class="row g-4">-->
+<!--            <div class="col-md-4 animate__animated animate__fadeInUp">-->
+<!--                <div class="testimonial-card p-4 rounded h-100">-->
+<!--                    <div class="quote-icon mb-3 text-primary">-->
+<!--                        <i class="fas fa-quote-left fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <p class="mb-4">"The member management system alone has saved me 10+ hours per week. I can now focus on training instead of paperwork."</p>-->
+<!--                    <div class="d-flex align-items-center">-->
+<!--                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" class="rounded-circle me-3" width="50">-->
+<!--                        <div>-->
+<!--                            <h6 class="fw-bold mb-0">Mark Johnson</h6>-->
+<!--                            <small class="text-muted">Owner, Iron Peak Gym</small>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="col-md-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-                <div class="testimonial-card p-4 rounded h-100">
-                    <div class="quote-icon mb-3 text-primary">
-                        <i class="fas fa-quote-left fa-2x"></i>
-                    </div>
-                    <p class="mb-4">"Our member retention increased by 35% after implementing the automated communication features."</p>
-                    <div class="d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="rounded-circle me-3" width="50">
-                        <div>
-                            <h6 class="fw-bold mb-0">Sarah Williams</h6>
-                            <small class="text-muted">Manager, FitLife Studio</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="col-md-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">-->
+<!--                <div class="testimonial-card p-4 rounded h-100">-->
+<!--                    <div class="quote-icon mb-3 text-primary">-->
+<!--                        <i class="fas fa-quote-left fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <p class="mb-4">"Our member retention increased by 35% after implementing the automated communication features."</p>-->
+<!--                    <div class="d-flex align-items-center">-->
+<!--                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" class="rounded-circle me-3" width="50">-->
+<!--                        <div>-->
+<!--                            <h6 class="fw-bold mb-0">Sarah Williams</h6>-->
+<!--                            <small class="text-muted">Manager, FitLife Studio</small>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="col-md-4 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-                <div class="testimonial-card p-4 rounded h-100">
-                    <div class="quote-icon mb-3 text-primary">
-                        <i class="fas fa-quote-left fa-2x"></i>
-                    </div>
-                    <p class="mb-4">"The reporting tools helped us identify our most profitable class times and optimize our schedule accordingly."</p>
-                    <div class="d-flex align-items-center">
-                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer" class="rounded-circle me-3" width="50">
-                        <div>
-                            <h6 class="fw-bold mb-0">David Chen</h6>
-                            <small class="text-muted">Director, Urban Fitness</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--            <div class="col-md-4 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">-->
+<!--                <div class="testimonial-card p-4 rounded h-100">-->
+<!--                    <div class="quote-icon mb-3 text-primary">-->
+<!--                        <i class="fas fa-quote-left fa-2x"></i>-->
+<!--                    </div>-->
+<!--                    <p class="mb-4">"The reporting tools helped us identify our most profitable class times and optimize our schedule accordingly."</p>-->
+<!--                    <div class="d-flex align-items-center">-->
+<!--                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Customer" class="rounded-circle me-3" width="50">-->
+<!--                        <div>-->
+<!--                            <h6 class="fw-bold mb-0">David Chen</h6>-->
+<!--                            <small class="text-muted">Director, Urban Fitness</small>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
-<!-- CTA Section -->
-<section class="py-5 bg-primary text-white">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-4">Ready to Experience GymFlow CRM?</h2>
-        <p class="lead mb-5">Start your 14-day free trial today. No credit card required.</p>
-        <div class="d-flex justify-content-center gap-3">
-            <button class="btn btn-light btn-lg px-4 py-3" data-bs-toggle="modal" data-bs-target="#signupModal">Get Started</button>
-            <a href="/about" class="btn btn-outline-light btn-lg px-4 py-3">Learn More</a>
-        </div>
-    </div>
-</section>
+<!--&lt;!&ndash; CTA Section &ndash;&gt;-->
+<!--<section class="py-5 bg-primary text-white">-->
+<!--    <div class="container text-center">-->
+<!--        <h2 class="fw-bold mb-4">Ready to Experience GymFlow CRM?</h2>-->
+<!--        <p class="lead mb-5">Start your 14-day free trial today. No credit card required.</p>-->
+<!--        <div class="d-flex justify-content-center gap-3">-->
+<!--            <button class="btn btn-light btn-lg px-4 py-3" data-bs-toggle="modal" data-bs-target="#signupModal">Get Started</button>-->
+<!--            <a href="/about" class="btn btn-outline-light btn-lg px-4 py-3">Learn More</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 
-<!-- Footer (Consistent with your main site) -->
-<footer class="bg-dark text-white py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h5 class="fw-bold mb-3">
-                    <i class="fas fa-dumbbell me-2"></i>GymFlow CRM
-                </h5>
-                <p>The complete management solution for fitness businesses.</p>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="/about" class="text-white">About</a></li>
-                    <li class="list-inline-item"><a href="/features" class="text-white">Features</a></li>
-                    <li class="list-inline-item"><a href="/contact" class="text-white">Contact</a></li>
-                    <li class="list-inline-item"><a href="/login" class="text-white">Login</a></li>
-                </ul>
-            </div>
-        </div>
-        <hr class="my-3">
-        <div class="row">
-            <div class="col-md-6">
-                <p class="mb-0">© 2025 GymFlow CRM. All rights reserved.</p>
-            </div>
-        </div>
-    </div>
-</footer>
+<!--&lt;!&ndash; Footer (Consistent with your main site) &ndash;&gt;-->
+<!--<footer class="bg-dark text-white py-4">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-6">-->
+<!--                <h5 class="fw-bold mb-3">-->
+<!--                    <i class="fas fa-dumbbell me-2"></i>GymFlow CRM-->
+<!--                </h5>-->
+<!--                <p>The complete management solution for fitness businesses.</p>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 text-md-end">-->
+<!--                <ul class="list-inline">-->
+<!--                    <li class="list-inline-item"><a href="/about" class="text-white">About</a></li>-->
+<!--                    <li class="list-inline-item"><a href="/features" class="text-white">Features</a></li>-->
+<!--                    <li class="list-inline-item"><a href="/contact" class="text-white">Contact</a></li>-->
+<!--                    <li class="list-inline-item"><a href="/login" class="text-white">Login</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <hr class="my-3">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-6">-->
+<!--                <p class="mb-0">© 2025 GymFlow CRM. All rights reserved.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
 
-<!-- Include your existing Login and Signup Modals here -->
-<!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Welcome Back</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="loginForm">
-                    <div id="loginError" class="alert alert-danger d-none mb-3">
-                        <i class="fas fa-exclamation-circle me-2"></i>
-                        <span id="errorMessage">Invalid email or password</span>
-                    </div>
+<!--&lt;!&ndash; Include your existing Login and Signup Modals here &ndash;&gt;-->
+<!--&lt;!&ndash; Login Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="loginModalLabel">Welcome Back</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form id="loginForm">-->
+<!--                    <div id="loginError" class="alert alert-danger d-none mb-3">-->
+<!--                        <i class="fas fa-exclamation-circle me-2"></i>-->
+<!--                        <span id="errorMessage">Invalid email or password</span>-->
+<!--                    </div>-->
 
-                    <!-- Email Field -->
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                    </div>
+<!--                    &lt;!&ndash; Email Field &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="email" class="form-label">Email</label>-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>-->
+<!--                            <input type="email" class="form-control" id="email" name="email" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <!-- Password Field -->
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                            <button type="button" class="input-group-text toggle-password">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
+<!--                    &lt;!&ndash; Password Field &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="password" class="form-label">Password</label>-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-text"><i class="fas fa-lock"></i></span>-->
+<!--                            <input type="password" class="form-control" id="password" name="password" required>-->
+<!--                            <button type="button" class="input-group-text toggle-password">-->
+<!--                                <i class="fas fa-eye"></i>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="rememberMe" name="remember-me">
-                            <label class="form-check-label" for="rememberMe">Remember me</label>
-                        </div>
-                        <a href="/forgot-password" class="text-decoration-none">Forgot password?</a>
-                    </div>
+<!--                    <div class="d-flex justify-content-between align-items-center mb-3">-->
+<!--                        <div class="form-check">-->
+<!--                            <input class="form-check-input" type="checkbox" id="rememberMe" name="remember-me">-->
+<!--                            <label class="form-check-label" for="rememberMe">Remember me</label>-->
+<!--                        </div>-->
+<!--                        <a href="/forgot-password" class="text-decoration-none">Forgot password?</a>-->
+<!--                    </div>-->
 
-                    <button type="submit" class="btn btn-primary w-100 mb-3">
-                        <i class="fas fa-sign-in-alt me-2"></i>
-                        Log In
-                    </button>
+<!--                    <button type="submit" class="btn btn-primary w-100 mb-3">-->
+<!--                        <i class="fas fa-sign-in-alt me-2"></i>-->
+<!--                        Log In-->
+<!--                    </button>-->
 
-                    <div class="text-center">
-                        Don't have an account? <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<!--                    <div class="text-center">-->
+<!--                        Don't have an account? <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</a>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
-<!-- Sign Up Modal -->
-<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="signupModalLabel">Create Your Account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="signupForm">
-                    <div id="signupError" class="alert alert-danger d-none mb-3">
-                        <i class="fas fa-exclamation-circle me-2"></i>
-                        <span id="signupErrorMessage">Please fill all required fields</span>
-                    </div>
+<!--&lt;!&ndash; Sign Up Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="signupModalLabel">Create Your Account</h5>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form id="signupForm">-->
+<!--                    <div id="signupError" class="alert alert-danger d-none mb-3">-->
+<!--                        <i class="fas fa-exclamation-circle me-2"></i>-->
+<!--                        <span id="signupErrorMessage">Please fill all required fields</span>-->
+<!--                    </div>-->
 
-                    <!-- Name Field -->
-                    <div class="mb-3">
-                        <label for="fullName" class="form-label">Full Name</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            <input type="text" class="form-control" id="fullName" name="fullName" required>
-                        </div>
-                    </div>
+<!--                    &lt;!&ndash; Name Field &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="fullName" class="form-label">Full Name</label>-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-text"><i class="fas fa-user"></i></span>-->
+<!--                            <input type="text" class="form-control" id="fullName" name="fullName" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <!-- Email Field -->
-                    <div class="mb-3">
-                        <label for="signupEmail" class="form-label">Email</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                            <input type="email" class="form-control" id="signupEmail" name="email" required>
-                        </div>
-                    </div>
+<!--                    &lt;!&ndash; Email Field &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="signupEmail" class="form-label">Email</label>-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>-->
+<!--                            <input type="email" class="form-control" id="signupEmail" name="email" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <!-- Contact Number -->
-                    <div class="mb-3">
-                        <label for="contactNumber" class="form-label">Contact Number</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                            <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
-                        </div>
-                    </div>
+<!--                    &lt;!&ndash; Contact Number &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="contactNumber" class="form-label">Contact Number</label>-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-text"><i class="fas fa-phone"></i></span>-->
+<!--                            <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <!-- Gender -->
-                    <div class="mb-3">
-                        <label class="form-label">Gender</label>
-                        <div class="d-flex gap-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
-                                <label class="form-check-label" for="male">Male</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                                <label class="form-check-label" for="female">Female</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="other" value="other">
-                                <label class="form-check-label" for="other">Other</label>
-                            </div>
-                        </div>
-                    </div>
+<!--                    &lt;!&ndash; Gender &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label class="form-label">Gender</label>-->
+<!--                        <div class="d-flex gap-3">-->
+<!--                            <div class="form-check">-->
+<!--                                <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>-->
+<!--                                <label class="form-check-label" for="male">Male</label>-->
+<!--                            </div>-->
+<!--                            <div class="form-check">-->
+<!--                                <input class="form-check-input" type="radio" name="gender" id="female" value="female">-->
+<!--                                <label class="form-check-label" for="female">Female</label>-->
+<!--                            </div>-->
+<!--                            <div class="form-check">-->
+<!--                                <input class="form-check-input" type="radio" name="gender" id="other" value="other">-->
+<!--                                <label class="form-check-label" for="other">Other</label>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <!-- Membership Type -->
-                    <div class="mb-3">
-                        <label for="membershipType" class="form-label">Membership Type</label>
-                        <select class="form-select" id="membershipType" name="membershipType" required>
-                            <option value="" selected disabled>Select membership</option>
-                            <option value="basic">Basic (1 Month)</option>
-                            <option value="standard">Standard (3 Months)</option>
-                            <option value="premium">Premium (6 Months)</option>
-                            <option value="annual">Annual (12 Months)</option>
-                        </select>
-                    </div>
+<!--                    &lt;!&ndash; Membership Type &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="membershipType" class="form-label">Membership Type</label>-->
+<!--                        <select class="form-select" id="membershipType" name="membershipType" required>-->
+<!--                            <option value="" selected disabled>Select membership</option>-->
+<!--                            <option value="basic">Basic (1 Month)</option>-->
+<!--                            <option value="standard">Standard (3 Months)</option>-->
+<!--                            <option value="premium">Premium (6 Months)</option>-->
+<!--                            <option value="annual">Annual (12 Months)</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
 
-                    <!-- Preferred Time -->
-                    <div class="mb-3">
-                        <label for="preferredTime" class="form-label">Preferred Time Slot</label>
-                        <select class="form-select" id="preferredTime" name="preferredTime" required>
-                            <option value="" selected disabled>Select preferred time</option>
-                            <option value="morning">Morning (6AM - 10AM)</option>
-                            <option value="afternoon">Afternoon (10AM - 4PM)</option>
-                            <option value="evening">Evening (4PM - 9PM)</option>
-                        </select>
-                    </div>
+<!--                    &lt;!&ndash; Preferred Time &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="preferredTime" class="form-label">Preferred Time Slot</label>-->
+<!--                        <select class="form-select" id="preferredTime" name="preferredTime" required>-->
+<!--                            <option value="" selected disabled>Select preferred time</option>-->
+<!--                            <option value="morning">Morning (6AM - 10AM)</option>-->
+<!--                            <option value="afternoon">Afternoon (10AM - 4PM)</option>-->
+<!--                            <option value="evening">Evening (4PM - 9PM)</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
 
-                    <!-- Password Field -->
-                    <div class="mb-3">
-                        <label for="signupPassword" class="form-label">Password</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                            <input type="password" class="form-control" id="signupPassword" name="password" required>
-                            <button type="button" class="input-group-text toggle-password">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                        <small class="form-text text-muted">Minimum 8 characters with at least one number and one letter</small>
-                    </div>
+<!--                    &lt;!&ndash; Password Field &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label for="signupPassword" class="form-label">Password</label>-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-text"><i class="fas fa-lock"></i></span>-->
+<!--                            <input type="password" class="form-control" id="signupPassword" name="password" required>-->
+<!--                            <button type="button" class="input-group-text toggle-password">-->
+<!--                                <i class="fas fa-eye"></i>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <small class="form-text text-muted">Minimum 8 characters with at least one number and one letter</small>-->
+<!--                    </div>-->
 
-                    <!-- Confirm Password Field -->
-                    <div class="mb-4">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-                        </div>
-                    </div>
+<!--                    &lt;!&ndash; Confirm Password Field &ndash;&gt;-->
+<!--                    <div class="mb-4">-->
+<!--                        <label for="confirmPassword" class="form-label">Confirm Password</label>-->
+<!--                        <div class="input-group">-->
+<!--                            <span class="input-group-text"><i class="fas fa-lock"></i></span>-->
+<!--                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <button type="submit" class="btn btn-success w-100 mb-3">
-                        <i class="fas fa-user-plus me-2"></i>
-                        Create Account
-                    </button>
+<!--                    <button type="submit" class="btn btn-success w-100 mb-3">-->
+<!--                        <i class="fas fa-user-plus me-2"></i>-->
+<!--                        Create Account-->
+<!--                    </button>-->
 
-                    <div class="text-center">
-                        Already have an account? <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Log In</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<!--                    <div class="text-center">-->
+<!--                        Already have an account? <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Log In</a>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-<script>
-    // Initialize animations
-    new WOW().init();
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>-->
+<!--<script>-->
+<!--    // Initialize animations-->
+<!--    new WOW().init();-->
 
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-</script>
+<!--    // Smooth scrolling for anchor links-->
+<!--    document.querySelectorAll('a[href^="#"]').forEach(anchor => {-->
+<!--        anchor.addEventListener('click', function (e) {-->
+<!--            e.preventDefault();-->
+<!--            document.querySelector(this.getAttribute('href')).scrollIntoView({-->
+<!--                behavior: 'smooth'-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 
-<script src="/js/auth.js"></script>
+<!--<script src="/js/auth.js"></script>-->
 
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->

@@ -1,165 +1,165 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GymFlow CRM | Dashboard</title>
-  <link rel="stylesheet" href="/css/dashboard.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-gray-100">
-<div class="dashboard-container">
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <img src="/images/logo.png" alt="GymFlow CRM logo" class="logo">
-      <h1>GymFlow CRM</h1>
-    </div>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <title>GymFlow CRM | Dashboard</title>-->
+<!--  <link rel="stylesheet" href="/css/dashboard.css">-->
+<!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">-->
+<!--</head>-->
+<!--<body class="bg-gray-100">-->
+<!--&lt;!&ndash;<div class="dashboard-container">&ndash;&gt;-->
+<!--  &lt;!&ndash; Sidebar &ndash;&gt;-->
+<!--  <aside class="sidebar">-->
+<!--    <div class="sidebar-header">-->
+<!--      <img src="/images/logo.png" alt="GymFlow CRM logo" class="logo">-->
+<!--      <h1>GymFlow CRM</h1>-->
+<!--    </div>-->
 
-    <nav class="sidebar-nav">
-      <a href="/" class="nav-item">  <!-- Changed to always go to root -->
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="/dashboard" class="nav-item active">
-        <i class="fas fa-chart-line"></i>
-        <span>Dashboard</span>
-      </a>
-      <a href="/members" class="nav-item">
-        <i class="fas fa-users"></i>
-        <span>Members</span>
-      </a>
-      <a href="/schedule" class="nav-item">
-        <i class="fas fa-calendar-alt"></i>
-        <span>Schedule</span>
-      </a>
-      <a href="/workouts" class="nav-item">
-        <i class="fas fa-dumbbell"></i>
-        <span>Workouts</span>
-      </a>
-      <a href="/payments" class="nav-item">
-        <i class="fas fa-money-bill-wave"></i>
-        <span>Payments</span>
-      </a>
-      <a href="/reports" class="nav-item">
-        <i class="fas fa-chart-pie"></i>
-        <span>Reports</span>
-      </a>
-      <a href="/settings" class="nav-item">
-        <i class="fas fa-cog"></i>
-        <span>Settings</span>
-      </a>
-    </nav>
+<!--    <nav class="sidebar-nav">-->
+<!--      <a href="/" class="nav-item">  &lt;!&ndash; Changed to always go to root &ndash;&gt;-->
+<!--        <i class="fas fa-home"></i>-->
+<!--        <span>Home</span>-->
+<!--      </a>-->
+<!--      <a href="/dashboard" class="nav-item active">-->
+<!--        <i class="fas fa-chart-line"></i>-->
+<!--        <span>Dashboard</span>-->
+<!--      </a>-->
+<!--      <a href="/members" class="nav-item">-->
+<!--        <i class="fas fa-users"></i>-->
+<!--        <span>Members</span>-->
+<!--      </a>-->
+<!--      <a href="/schedule" class="nav-item">-->
+<!--        <i class="fas fa-calendar-alt"></i>-->
+<!--        <span>Schedule</span>-->
+<!--      </a>-->
+<!--      <a href="/workouts" class="nav-item">-->
+<!--        <i class="fas fa-dumbbell"></i>-->
+<!--        <span>Workouts</span>-->
+<!--      </a>-->
+<!--      <a href="/payments" class="nav-item">-->
+<!--        <i class="fas fa-money-bill-wave"></i>-->
+<!--        <span>Payments</span>-->
+<!--      </a>-->
+<!--      <a href="/reports" class="nav-item">-->
+<!--        <i class="fas fa-chart-pie"></i>-->
+<!--        <span>Reports</span>-->
+<!--      </a>-->
+<!--      <a href="/settings" class="nav-item">-->
+<!--        <i class="fas fa-cog"></i>-->
+<!--        <span>Settings</span>-->
+<!--      </a>-->
+<!--    </nav>-->
 
-    <div class="user-profile">
-      <img src="/images/user-avatar.png" alt="User avatar" class="avatar">
-      <div>
-        <p class="username" th:text="${user.fullname}">Admin User</p>
-        <p class="user-email" th:text="${user.email}">admin@gymflow.com</p>
-      </div>
-    </div>
-  </aside>
+<!--    <div class="user-profile">-->
+<!--      <img src="/images/user-avatar.png" alt="User avatar" class="avatar">-->
+<!--      <div>-->
+<!--        <p class="username" th:text="${user.fullname}">Admin User</p>-->
+<!--        <p class="user-email" th:text="${user.email}">admin@gymflow.com</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </aside>-->
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <header class="main-header">
-      <div class="mobile-header">
-        <button id="menu-toggle" class="menu-button">
-          <i class="fas fa-bars"></i>
-        </button>
-        <h1>Dashboard</h1>
-      </div>
+<!--  &lt;!&ndash; Main Content &ndash;&gt;-->
+<!--  <main class="main-content">-->
+<!--    <header class="main-header">-->
+<!--      <div class="mobile-header">-->
+<!--        <button id="menu-toggle" class="menu-button">-->
+<!--          <i class="fas fa-bars"></i>-->
+<!--        </button>-->
+<!--        <h1>Dashboard</h1>-->
+<!--      </div>-->
 
-      <div class="desktop-header">
-        <h1>Dashboard</h1>
-        <div class="header-actions">
-          <div class="search-container">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search..." class="search-input">
-          </div>
-          <button class="btn btn-primary">
-            <i class="fas fa-plus"></i>
-            <span>Add Member</span>
-          </button>
-          <form th:action="@{/logout}" method="post">
-            <button id="logoutBtn" class="btn btn-danger">
-              <i class="fas fa-sign-out-alt"></i>
-              <span>Logout</span>
-            </button>
-          </form>
-        </div>
-      </div>
-    </header>
+<!--      <div class="desktop-header">-->
+<!--        <h1>Dashboard</h1>-->
+<!--        <div class="header-actions">-->
+<!--          <div class="search-container">-->
+<!--            <i class="fas fa-search"></i>-->
+<!--            <input type="text" placeholder="Search..." class="search-input">-->
+<!--          </div>-->
+<!--          <button class="btn btn-primary">-->
+<!--            <i class="fas fa-plus"></i>-->
+<!--            <span>Add Member</span>-->
+<!--          </button>-->
+<!--          <form th:action="@{/logout}" method="post">-->
+<!--            <button id="logoutBtn" class="btn btn-danger">-->
+<!--              <i class="fas fa-sign-out-alt"></i>-->
+<!--              <span>Logout</span>-->
+<!--            </button>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </header>-->
 
-    <!-- Dashboard Cards -->
-    <section class="dashboard-cards">
-      <div class="card">
-        <div class="card-content">
-          <div>
-            <p class="card-label">Total Members</p>
-            <h3 class="card-value" th:text="${totalMembers}">1,248</h3>
-            <p class="card-trend positive">
-              <i class="fas fa-arrow-up"></i>
-              <span th:text="${percentageChangeTotalMembers}">12%</span>
-            </p>
-          </div>
-          <div class="card-icon">
-            <i class="fas fa-users"></i>
-          </div>
-        </div>
-      </div>
+<!--    &lt;!&ndash; Dashboard Cards &ndash;&gt;-->
+<!--    <section class="dashboard-cards">-->
+<!--      <div class="card">-->
+<!--        <div class="card-content">-->
+<!--          <div>-->
+<!--            <p class="card-label">Total Members</p>-->
+<!--            <h3 class="card-value" th:text="${totalMembers}">1,248</h3>-->
+<!--            <p class="card-trend positive">-->
+<!--              <i class="fas fa-arrow-up"></i>-->
+<!--              <span th:text="${percentageChangeTotalMembers}">12%</span>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          <div class="card-icon">-->
+<!--            <i class="fas fa-users"></i>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <div class="card">
-        <div class="card-content">
-          <div>
-            <p class="card-label">Active Memberships</p>
-            <h3 class="card-value" th:text="${activeMemberships}">956</h3>
-            <p class="card-trend positive">
-              <i class="fas fa-arrow-up"></i>
-              <span th:text="${percentageChangeActiveMemberships}">5%</span>
-            </p>
-          </div>
-          <div class="card-icon">
-            <i class="fas fa-id-card"></i>
-          </div>
-        </div>
-      </div>
+<!--      <div class="card">-->
+<!--        <div class="card-content">-->
+<!--          <div>-->
+<!--            <p class="card-label">Active Memberships</p>-->
+<!--            <h3 class="card-value" th:text="${activeMemberships}">956</h3>-->
+<!--            <p class="card-trend positive">-->
+<!--              <i class="fas fa-arrow-up"></i>-->
+<!--              <span th:text="${percentageChangeActiveMemberships}">5%</span>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          <div class="card-icon">-->
+<!--            <i class="fas fa-id-card"></i>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <div class="card">
-        <div class="card-content">
-          <div>
-            <p class="card-label">This Month's Revenue</p>
-            <h3 class="card-value" th:text="${monthlyRevenue}">$24,780</h3>
-            <p class="card-trend negative">
-              <i class="fas fa-arrow-down"></i>
-              <span th:text="${percentageChangeMonthlyRevenue}">3%</span>
-            </p>
-          </div>
-          <div class="card-icon">
-            <i class="fas fa-dollar-sign"></i>
-          </div>
-        </div>
-      </div>
+<!--      <div class="card">-->
+<!--        <div class="card-content">-->
+<!--          <div>-->
+<!--            <p class="card-label">This Month's Revenue</p>-->
+<!--            <h3 class="card-value" th:text="${monthlyRevenue}">$24,780</h3>-->
+<!--            <p class="card-trend negative">-->
+<!--              <i class="fas fa-arrow-down"></i>-->
+<!--              <span th:text="${percentageChangeMonthlyRevenue}">3%</span>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          <div class="card-icon">-->
+<!--            <i class="fas fa-dollar-sign"></i>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <div class="card">
-        <div class="card-content">
-          <div>
-            <p class="card-label">Avg. Attendance</p>
-            <h3 class="card-value" th:text="${averageAttendance}">68%</h3>
-            <p class="card-trend positive">
-              <i class="fas fa-arrow-up"></i>
-              <span th:text="${percentageChangeAverageAttendance}">8%</span>
-            </p>
-          </div>
-          <div class="card-icon">
-            <i class="fas fa-chart-line"></i>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-</div>
+<!--      <div class="card">-->
+<!--        <div class="card-content">-->
+<!--          <div>-->
+<!--            <p class="card-label">Avg. Attendance</p>-->
+<!--            <h3 class="card-value" th:text="${averageAttendance}">68%</h3>-->
+<!--            <p class="card-trend positive">-->
+<!--              <i class="fas fa-arrow-up"></i>-->
+<!--              <span th:text="${percentageChangeAverageAttendance}">8%</span>-->
+<!--            </p>-->
+<!--          </div>-->
+<!--          <div class="card-icon">-->
+<!--            <i class="fas fa-chart-line"></i>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
+<!--  </main>-->
+<!--</div>-->
 
-<script src="/js/dashboard.js"></script>
-</body>
-</html>
+<!--<script src="/js/dashboard.js"></script>-->
+<!--</body>-->
+<!--</html>-->
