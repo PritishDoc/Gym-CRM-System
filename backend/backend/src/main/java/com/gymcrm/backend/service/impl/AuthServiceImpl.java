@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Random;
 
 @Slf4j
 @Service
@@ -47,6 +48,8 @@ public class AuthServiceImpl implements AuthService {
             log.error("Registration failed - user already exists with email: {}", request.getEmail());
             throw new UserAlreadyExistsException("Email already in use");
         }
+        // Generate and set OTP
+        String otp = generateOtp();
 
         // Create new user
         var user = User.builder()
@@ -56,6 +59,10 @@ public class AuthServiceImpl implements AuthService {
                 .role(request.getRole() != null ? request.getRole() : Role.USER)
                 .verified(false)
                 .active(true)
+                .gender(request.getGender())
+                .membership(request.getMembership())
+                .otp(otp)
+                .contactNo(request.getContactNo())
                 .createdAt(LocalDateTime.now().toString())
                 .build();
 
@@ -66,6 +73,7 @@ public class AuthServiceImpl implements AuthService {
         var jwtToken = jwtService.generateToken(user);
         return AuthResponse.builder()
                 .token(jwtToken)
+                .fullname(user.getFullname())
                 .email(user.getEmail())
                 .role(user.getRole())
                 .build();
@@ -136,5 +144,9 @@ public class AuthServiceImpl implements AuthService {
 
         tokenBlacklistRepository.save(blacklistedToken);
         log.info("Token successfully blacklisted");
+    }
+
+    private String generateOtp() {
+        return String.format("%04d", new Random().nextInt(10000));
     }
 }
