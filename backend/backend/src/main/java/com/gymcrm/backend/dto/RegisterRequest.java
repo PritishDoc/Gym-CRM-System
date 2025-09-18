@@ -16,7 +16,7 @@ public class RegisterRequest {
     private String contactNo;
     private String gender;
     private String membership;
-    private String preferredTime;
+//    private String preferredTime;
     private String password;
     private Role role; // Add this field
 
