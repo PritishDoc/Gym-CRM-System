@@ -27,7 +27,6 @@ public class User implements UserDetails {
 
     @Column(unique = true)
     private String email;
-
     private String contactNo;
     private String gender;
     private String membership;
