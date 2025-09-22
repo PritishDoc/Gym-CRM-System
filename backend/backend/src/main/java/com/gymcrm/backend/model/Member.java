@@ -38,7 +38,7 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String Date_of_Joining;
+    private String date_of_Joining;
 
 
     public boolean isVerified() {

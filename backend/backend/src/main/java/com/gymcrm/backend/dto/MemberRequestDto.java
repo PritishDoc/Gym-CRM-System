@@ -13,5 +13,5 @@ public class MemberRequestDto {
     private String preferredTime;
     private Integer age;
     private String trainer;
-    private String Date_of_Joining;
+    private String date_of_Joining;
 }

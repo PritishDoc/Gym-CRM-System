@@ -18,7 +18,7 @@ public class memberController {
     private MemberService memberService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody MemberRequestDto dto) {
+    public ResponseEntity<?> registerMember(@RequestBody MemberRequestDto dto) {
         try {
             String result = memberService.registerMember(dto);
             return ResponseEntity.ok(result);

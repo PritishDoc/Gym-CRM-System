@@ -58,11 +58,11 @@ public class MemberServiceimpl implements MemberService {
                     .gender(dto.getGender())
                     .membership(dto.getMembership())
                     .preferredTime(dto.getPreferredTime())
-                            .age(dto.getAge())
-                            .trainer(dto.getTrainer())
+                    .age(dto.getAge())
+                    .trainer(dto.getTrainer())
                     .otp(otp)
                     .role(Role.MEMBER) // Set default role
-                            .Date_of_Joining(dto.getDate_of_Joining().toString())
+                    .date_of_Joining(dto.getDate_of_Joining().toString())
 //                            .created()
                     .build()
             );
@@ -193,6 +193,8 @@ public class MemberServiceimpl implements MemberService {
                 .preferredTime(member.getPreferredTime())
                 .verified(member.isVerified())
                 .Date_of_Joining(member.getDate_of_Joining())
+                .age(member.getAge())
+                .trainer(member.getTrainer())
 //                .createdAt(member.getCreatedAt())
                 .build();
     }
