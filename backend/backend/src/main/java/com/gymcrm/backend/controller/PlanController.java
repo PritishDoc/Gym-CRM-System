@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/plans")
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 public class PlanController {
 
     @Autowired
