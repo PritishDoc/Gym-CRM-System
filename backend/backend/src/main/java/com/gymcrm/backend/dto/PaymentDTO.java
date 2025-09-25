@@ -1,5 +1,10 @@
 package com.gymcrm.backend.dto;
 
+//import lombok.AllArgsConstructor;
+//import lombok.Builder;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PaymentDTO {
     private Long id;
-    private Long userId;
+    private Long memberId;
     private Long planId;
     private Double amount;
     private String paymentMethod;

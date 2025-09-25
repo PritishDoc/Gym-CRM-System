@@ -1,7 +1,7 @@
 package com.gymcrm.backend.dto;
 
 public class PaymentUpdateRequest {
-    private Long userId;
+    private Long memberId;
     private Long planId;
     private Double amount;
     private String paymentMethod;
@@ -9,12 +9,12 @@ public class PaymentUpdateRequest {
 
     // Getters and setters
 
-    public Long getUserId() {
-        return userId;
+    public Long getMemberId() {
+        return memberId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setMemberId(Long userId) {
+        this.memberId = memberId;
     }
 
     public Long getPlanId() {

@@ -3,9 +3,11 @@ package com.gymcrm.backend.service.impl;
 import com.gymcrm.backend.dto.PaymentDTO;
 import com.gymcrm.backend.dto.PaymentRequest;
 import com.gymcrm.backend.exception.PaymentNotFoundException;
+import com.gymcrm.backend.model.Member;
 import com.gymcrm.backend.model.Payment;
 import com.gymcrm.backend.model.Plan;
 import com.gymcrm.backend.model.User;
+import com.gymcrm.backend.repository.MemberRepository;
 import com.gymcrm.backend.repository.PaymentRepository;
 import com.gymcrm.backend.repository.PlanRepository;
 import com.gymcrm.backend.repository.UserRepository;
@@ -22,19 +24,19 @@ import java.util.stream.Collectors;
 public class PaymentServiceImpl implements PaymentService {
 
     private final PaymentRepository paymentRepository;
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
     private final PlanRepository planRepository;
 
     @Override
     public PaymentDTO createPayment(PaymentRequest paymentRequest) {
-        User user = userRepository.findById(paymentRequest.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        Member member = memberRepository.findById(paymentRequest.getMemberId())
+                .orElseThrow(() -> new RuntimeException("Member not found"));
 
         Plan plan = planRepository.findById(paymentRequest.getPlanId())
                 .orElseThrow(() -> new RuntimeException("Plan not found"));
 
         Payment payment = Payment.builder()
-                .user(user)
+                .member(member)
                 .plan(plan)
                 .amount(paymentRequest.getAmount())
                 .paymentMethod(paymentRequest.getPaymentMethod())
@@ -56,8 +58,8 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public List<PaymentDTO> getPaymentsByUser(Long userId) {
-        return paymentRepository.findByUserId(userId)
+    public List<PaymentDTO> getPaymentsByMember(Long memberId) {
+        return paymentRepository.findByMemberId(memberId)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
@@ -83,7 +85,7 @@ public class PaymentServiceImpl implements PaymentService {
     private PaymentDTO mapToDTO(Payment payment) {
         return PaymentDTO.builder()
                 .id(payment.getId())
-                .userId(payment.getUser().getId())
+                .memberId(payment.getMember().getId())
                 .planId(payment.getPlan().getId())
                 .amount(payment.getAmount())
                 .paymentMethod(payment.getPaymentMethod())
@@ -98,3 +100,4 @@ public class PaymentServiceImpl implements PaymentService {
         return "TXN" + System.currentTimeMillis();
     }
 }
+

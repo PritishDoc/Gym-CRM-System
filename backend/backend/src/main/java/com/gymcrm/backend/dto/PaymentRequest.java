@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaymentRequest {
-    private Long userId;
+    private Long memberId;
     private Long planId;
     private Double amount;
     private String paymentMethod;
