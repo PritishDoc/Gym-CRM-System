@@ -39,10 +39,11 @@ public class PaymentController {
     @PatchMapping("/{id}/status")
     public ResponseEntity<PaymentDTO> updatePaymentStatus(
             @PathVariable Long id,
-            @RequestParam String status,
-            @RequestHeader("Authorization") String token) {
+            @RequestParam String status) {
         // Verify token if needed
         return ResponseEntity.ok(paymentService.updatePaymentStatus(id, status));
     }
 
 }
+
+//@RequestHeader("Authorization") String token
