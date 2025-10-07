@@ -1,51 +1,47 @@
 package com.gymcrm.backend.model;
 
-
 import com.gymcrm.backend.model.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "members")
-public class Member {
-
+@Table(name = "trainers")
+public class Trainer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
+
     private String contactNo;
     private String gender;
-    private String membership;
+    private Integer age;
+    private String address;
+
+    private Integer experienceYears;
+    private String preferredTime;
+
     private String otp;
     private boolean verified;
-    private String preferredTime;
-    private Integer age;
-    private String trainer;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private String date_of_Joining;
+    private String dateOfJoining;
 
-
-//    public boolean isVerified() {
-//        return verified;
-//    }
-
-
-
+    // Relationships
+    @OneToMany(mappedBy = "trainer")
+    private List<Member> assignedMembers;   // One trainer to many members
 
 }
