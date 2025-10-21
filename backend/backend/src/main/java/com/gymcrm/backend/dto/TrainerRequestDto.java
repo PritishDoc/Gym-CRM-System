@@ -3,18 +3,15 @@ package com.gymcrm.backend.dto;
 import lombok.Data;
 
 @Data
-public class MemberRequestDto {
+public class TrainerRequestDto {
 
     private String name;
     private String email;
     private String contactNo;
     private String gender;
-    private String membership;
-    private String preferredTime;
     private Integer age;
-
-//  private String trainer;
-    private Long trainerId;
-
-    private String date_of_Joining;
+    private String address;
+    private Integer experienceYears;
+    private String preferredTime;
+    private String dateOfJoining;
 }

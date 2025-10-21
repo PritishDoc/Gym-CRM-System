@@ -1,9 +1,9 @@
 package com.gymcrm.backend.controller;
 
-import com.gymcrm.backend.dto.MemberRequestDto;
-import com.gymcrm.backend.dto.MemberRespose;
+import com.gymcrm.backend.dto.TrainerRequestDto;
+import com.gymcrm.backend.dto.TrainerRespose;
 import com.gymcrm.backend.dto.VerifyRequest;
-import com.gymcrm.backend.service.MemberService;
+import com.gymcrm.backend.service.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/members")
-public class memberController {
+@RequestMapping("/api/trainers")
+public class TrainerController {
 
     @Autowired
-    private MemberService memberService;
+    private TrainerService trainerService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerMember(@RequestBody MemberRequestDto dto) {
+    public ResponseEntity<?> registerTrainer(@RequestBody TrainerRequestDto dto) {
         try {
-            String result = memberService.registerMember(dto);
+            String result = trainerService.registerTrainer(dto);
             return ResponseEntity.ok(result);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -32,7 +32,7 @@ public class memberController {
     @PostMapping("/verify")
     public ResponseEntity<?> verifyOtp(@RequestBody VerifyRequest request) {
         try {
-            String result = memberService.verifyOtp(request.getEmail(), request.getOtp());
+            String result = trainerService.verifyOtp(request.getEmail(), request.getOtp());
             return ResponseEntity.ok(result);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -44,43 +44,41 @@ public class memberController {
     @GetMapping("/by-email")
     public ResponseEntity<?> getUserByEmail(@RequestParam String email) {
         try {
-            MemberRespose user = memberService.getMemberByEmail(email);
+            TrainerRespose user = trainerService.getTrainerByEmail(email);
             return ResponseEntity.ok(user);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    // fetch a member by id
+    // fetch a trainer by id
     @GetMapping("/{id}")
-    public ResponseEntity<?> getMemberById(@PathVariable Long id) {
+    public ResponseEntity<?> getTrainerById(@PathVariable Long id) {
         try {
-            MemberRespose member = memberService.getMemberById(id);
-            return ResponseEntity.ok(member);
+            TrainerRespose trainer = trainerService.getTrainerById(id);
+            return ResponseEntity.ok(trainer);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-
     @PutMapping("/{id}")
     public ResponseEntity<?> updateUser(
             @PathVariable Long id,
-            @RequestBody MemberRequestDto dto
+            @RequestBody TrainerRequestDto dto
     ) {
         try {
-            MemberRespose updatedUser = memberService.updateMeber(id, dto);
+            TrainerRespose updatedUser = trainerService.updateTrainer(id, dto);
             return ResponseEntity.ok(updatedUser);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         try {
-            memberService.deleteMember(id);
+            trainerService.deleteTrainer(id);
             return ResponseEntity.noContent().build();
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -90,7 +88,7 @@ public class memberController {
     @GetMapping("/all")
     public ResponseEntity<?> getAllUsers() {
         try {
-            List<MemberRespose> users = memberService.getAllMembers();
+            List<TrainerRespose> users = trainerService.getAllTrainers();
             return ResponseEntity.ok(users);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

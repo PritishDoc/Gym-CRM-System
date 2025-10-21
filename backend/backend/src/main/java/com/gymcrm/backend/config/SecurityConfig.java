@@ -136,7 +136,7 @@ public class SecurityConfig {
                                 "/api/user/register", "/api/user/verify", "/api/user/by-email/**", "/api/user/all",
                                 "/api/members/register","/api/members/verify","/api/members/by-email/**","/api/members/all",
                                 "/api/members/{id}","/api/members/**"
-                                ,"/api/plans/**", "/api/auth/**", "/api/payments/**", "/api/attendance/**", "/api/email/**",
+                                ,"/api/trainers/**","/api/plans/**", "/api/auth/**", "/api/payments/**", "/api/attendance/**", "/api/email/**",
                                 "/logout", "/error", "/v3/api-docs/**", "/swagger-ui/**", "/dashboard/**",
                                 "/css/**", "/js/**"
                         ).permitAll()

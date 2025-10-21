@@ -2,10 +2,11 @@ package com.gymcrm.backend.service.impl;
 
 import com.gymcrm.backend.dto.MemberRespose;
 import com.gymcrm.backend.dto.MemberRequestDto;
-import com.gymcrm.backend.dto.UserResponse;
 import com.gymcrm.backend.model.Member;
 import com.gymcrm.backend.model.enums.Role;
 import com.gymcrm.backend.repository.MemberRepository;
+import com.gymcrm.backend.model.Trainer;
+import com.gymcrm.backend.repository.TrainerRepository;
 import com.gymcrm.backend.service.MemberService;
 import com.gymcrm.backend.util.EmailSender;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +14,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 
 @Service
-public class MemberServiceimpl implements MemberService {
+public class MemberServiceImpl implements MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
+
+    @Autowired
+    private TrainerRepository trainerRepository;
 
     @Autowired
     private EmailSender emailSender;
@@ -47,25 +50,30 @@ public class MemberServiceimpl implements MemberService {
         // Generate and set OTP
         String otp = generateOtp();
 
+// before saving, resolve trainer (if provided)
+        Trainer assignedTrainer = null;
+        if (dto.getTrainerId() != null) {
+            assignedTrainer = trainerRepository.findById(dto.getTrainerId())
+                    .orElseThrow(() -> new RuntimeException("Trainer not found with id: " + dto.getTrainerId()));
+        }
 
+// Create and save user
+        Member member = memberRepository.save(
+                Member.builder()
+                        .name(dto.getName())
+                        .email(dto.getEmail().toLowerCase()) // Normalize email case
+                        .contactNo(dto.getContactNo())
+                        .gender(dto.getGender())
+                        .membership(dto.getMembership())
+                        .preferredTime(dto.getPreferredTime())
+                        .age(dto.getAge())
+                        .trainer(assignedTrainer)   // <-- now Trainer type
+                        .otp(otp)
+                        .role(Role.MEMBER) // Set default role
+                        .date_of_Joining(dto.getDate_of_Joining().toString())
+                        .build()
+        );
 
-            // Create and save user
-            Member member = memberRepository.save(
-                    Member.builder()
-                    .name(dto.getName())
-                    .email(dto.getEmail().toLowerCase()) // Normalize email case
-                    .contactNo(dto.getContactNo())
-                    .gender(dto.getGender())
-                    .membership(dto.getMembership())
-                    .preferredTime(dto.getPreferredTime())
-                    .age(dto.getAge())
-                    .trainer(dto.getTrainer())
-                    .otp(otp)
-                    .role(Role.MEMBER) // Set default role
-                    .date_of_Joining(dto.getDate_of_Joining().toString())
-//                            .created()
-                    .build()
-            );
 
         member.setOtp(otp);
         member.setVerified(false); // reset verified status
@@ -119,9 +127,18 @@ public class MemberServiceimpl implements MemberService {
         return "OTP verified successfully. Your account is now active!";
     }
 
+//    @Override
+//    public MemberRespose getMemberByEmail(String email) {
+//        Member member = memberRepository.findByEmailIgnoreCase(email)
+//                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+//        return convertToUserResponse(member);
+//    }
+
     @Override
+    @Transactional(readOnly = true)
     public MemberRespose getMemberByEmail(String email) {
-        Member member = memberRepository.findByEmailIgnoreCase(email)
+        // use repo method that fetches trainer
+        Member member = memberRepository.findByEmailWithTrainer(email)
                 .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
         return convertToUserResponse(member);
     }
@@ -140,7 +157,12 @@ public class MemberServiceimpl implements MemberService {
         if (dto.getMembership() != null) member.setMembership(dto.getMembership());
         if (dto.getPreferredTime() != null) member.setPreferredTime(dto.getPreferredTime());
         if (dto.getAge() != null) member.setAge(dto.getAge());
-        if (dto.getTrainer() != null) member.setTrainer(dto.getTrainer());
+//        if (dto.getTrainer() != null) member.setTrainer(dto.getTrainer());
+        if (dto.getTrainerId() != null) {
+            Trainer assignedTrainer = trainerRepository.findById(dto.getTrainerId())
+                    .orElseThrow(() -> new RuntimeException("Trainer not found with id: " + dto.getTrainerId()));
+            member.setTrainer(assignedTrainer);
+        }
 
         if (dto.getEmail() != null) {
             if (!dto.getEmail().equalsIgnoreCase(member.getEmail()) &&
@@ -164,16 +186,33 @@ public class MemberServiceimpl implements MemberService {
         memberRepository.deleteById(id);
     }
 
+//    @Override
+//    public List<MemberRespose> getAllMembers() {
+//        return memberRepository.findAll().stream()
+//                .map(this::convertToUserResponse)
+//                .collect(Collectors.toList());
+//    }
+
     @Override
+    @Transactional(readOnly = true)
     public List<MemberRespose> getAllMembers() {
-        return memberRepository.findAll().stream()
+        // use repository fetch-all to avoid N+1 when converting list
+        return memberRepository.findAllWithTrainer().stream()
                 .map(this::convertToUserResponse)
                 .collect(Collectors.toList());
     }
 
+//    @Override
+//    public MemberRespose getMemberById(Long id) {
+//        Member member = memberRepository.findById(id)
+//                .orElseThrow(() -> new RuntimeException("Member not found with id: " + id));
+//        return convertToUserResponse(member);
+//    }
+
     @Override
+    @Transactional(readOnly = true)
     public MemberRespose getMemberById(Long id) {
-        Member member = memberRepository.findById(id)
+        Member member = memberRepository.findByIdWithTrainer(id)
                 .orElseThrow(() -> new RuntimeException("Member not found with id: " + id));
         return convertToUserResponse(member);
     }
@@ -194,7 +233,10 @@ public class MemberServiceimpl implements MemberService {
                 .verified(member.isVerified())
                 .Date_of_Joining(member.getDate_of_Joining())
                 .age(member.getAge())
-                .trainer(member.getTrainer())
+//                .trainer(member.getTrainer())
+                .trainerId(member.getTrainer() != null ? member.getTrainer().getId() : null)
+                .trainerName(member.getTrainer() != null ? member.getTrainer().getName() : null)
+
 //                .createdAt(member.getCreatedAt())
                 .build();
     }
